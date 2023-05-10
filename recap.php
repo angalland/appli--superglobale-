@@ -14,7 +14,7 @@
     <?php
         if (!isset($_SESSION['products']) || empty($_SESSION['products'])) {
             echo ""
-        }
+        }fefef
      ?>
 </body>
 </html>
