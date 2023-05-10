@@ -11,6 +11,10 @@
     <title>Recapitulatif des produits</title>
 </head>
 <body>
-    <?php var_dump($_SESSION); ?>
+    <?php
+        if (!isset($_SESSION['products']) || empty($_SESSION['products'])) {
+            echo ""
+        }
+     ?>
 </body>
 </html>
