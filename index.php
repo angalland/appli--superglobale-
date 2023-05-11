@@ -32,7 +32,7 @@
                     </label>
                 </p>
                 <p>
-                    <input type="submit" name="submit" value="Ajouter le produit" class="form-control">
+                    <input type="submit" name="submit" value="Ajouter le produit" class="btn btn-primary">
                 </p>
             </form>
         </main> 
