@@ -10,6 +10,9 @@
         <title>Ajout produit</title>
     </head>
     <body>
+        <?php
+            session_start();
+        ?>
         <main class="container my-5">
             <nav>
                 <ul class="nav justify-content-center nav-pills">
@@ -41,6 +44,7 @@
                     <input type="submit" name="submit" value="Ajouter le produit" class="btn btn-primary">
                 </p>
             </form>
+            <p class="bg-success w-25 rounded-pill text-center text-white">Il y a <?= count($_SESSION['products']) ?> produits ajoutés</p>
         </main> 
         
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" crossorigin="anonymous"></script>

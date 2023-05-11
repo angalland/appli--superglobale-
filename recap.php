@@ -61,7 +61,8 @@
                     "</tr>",
 
                     "</tbody>",
-                "</table>",
+                "</table>";
+            echo "<p class='bg-success w-25 rounded-pill text-center text-white'>Il y a ".count($_SESSION['products'])." produits ajoutés</p>",
                 "</main>";
         }
     ?>
