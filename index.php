@@ -10,14 +10,12 @@
         <title>Ajout produit</title>
     </head>
     <body>
-        <div class="container">
-            <nav class="navbar navbar-expand-lg bg-body-tertiary">
-                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+            <nav>
+                <ul class="nav justify-content-center nav-pills">
                     <li class="nav-item"><a class="nav-link" href="index.php">Ajouter un produit</a></li>
-                    <li class="nav-item"><a class="nav-link" href="recap.php">Récapitulation</a></li>
+                    <li class="nav-item"><a class="nav-link active" href="recap.php">Récapitulation</a></li>
                 <ul>
             </nav>
-        </div>
         <main class="container text-center vh-100 d-flex flex-wrap align-content-center">
             <h1 class="row col-12 justify-content-center align-items-end align-self-center">Ajouter un produit</h1>
             <form action="traitement.php" method="post" class="row col-12 justify-content-center">

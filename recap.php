@@ -19,13 +19,18 @@
             echo "<p>Aucun produit en session....</p>";
         }
         else {
-            echo "<main class='container text-center vh-100 d-flex flex-wrap align-content-center'>",
-                    "<nav>",
-                        "<ul>",
-                            "<li><a href='index.php'>Ajouter un produit</a></li>",
-                            "<li><a href='recap.php'>Récapitulation</a></li>",
-                        "<ul>",
-                    "</nav>",
+            echo 
+                "<nav>",
+                    "<ul class='nav justify-content-center nav-pills'>",
+                        "<li class='nav-item'>",
+                            "<a class='nav-link active' href='index.php'>Ajouter un produit</a>",
+                        "</li>",
+                        "<li class='nav-item'>",
+                            "<a class='nav-link' href='recap.php'>Récapitulation</a>",
+                        "</li>",
+                    "<ul>",
+                "</nav>",
+                "<main class='container text-center vh-100 d-flex flex-wrap align-content-center'>",
                     "<table class='table table-striped table-bordered border-danger table-sm text-center'>",
                         "<thead>",
                             "<tr class='table-primary table-bordered border-danger'>",
