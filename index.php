@@ -28,7 +28,7 @@
                 </label>
             </p>
             <p>
-                <input type="submit" name="submit" value="ajouter le produit">
+                <input type="submit" name="submit" value="Ajouter le produit">
             </p>
         </form>        
     </body>

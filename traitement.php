@@ -11,7 +11,7 @@
             $product = [
                 "name"  => $name,
                 "price" => $price,
-                "qtt"   => $price,
+                "qtt"   => $qtt,
                 "total" => $price*$qtt
             ];
 
