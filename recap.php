@@ -27,7 +27,7 @@
                         "<a class='nav-link active' href='index.php'>Ajouter un produit</a>",
                     "</li>",
                     "<li class='nav-item'>",
-                        "<a class='nav-link' href='recap.php'>Récapitulation</a>",
+                        "<a class='nav-link' href='recap.php'>Récapitulatif</a>",
                     "</li>",
                 "<ul>",
             "</nav>",

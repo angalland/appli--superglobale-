@@ -22,7 +22,7 @@
             $_SESSION['products'][] = $product;
             $nbSession++;
         } else {
-            $_SESSION['alert'] = "Votre produit n'a pas été ajouté, il est incorrecte !";
+            $_SESSION['alert'] = "Votre produit n'a pas été ajouté, il est incorrect !";
         }
     }
 
