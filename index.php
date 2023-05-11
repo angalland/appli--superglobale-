@@ -10,28 +10,28 @@
         <title>Ajout produit</title>
     </head>
     <body>
+        <main class="container my-5">
             <nav>
                 <ul class="nav justify-content-center nav-pills">
                     <li class="nav-item"><a class="nav-link" href="index.php">Ajouter un produit</a></li>
                     <li class="nav-item"><a class="nav-link active" href="recap.php">Récapitulation</a></li>
                 <ul>
             </nav>
-        <main class="container text-center vh-100 d-flex flex-wrap align-content-center">
-            <h1 class="row col-12 justify-content-center align-items-end align-self-center">Ajouter un produit</h1>
+            <h1 class="row col-12">Ajouter un produit</h1>
             <form action="traitement.php" method="post" class="row col-12 justify-content-center">
-                <p class="col-3">
+                <p class="col-12">
                     <label>
                         Nom du produit : 
                         <input type="text" name="name" class="form-control">
                     </label>
                 </p>
-                <p class="col-3">
+                <p class="col-12">
                     <label>
                         Prix du produit :
                         <input type="number" step="any" name="price" class="form-control">
                     </label>
                 </p>
-                <p class="col-3">
+                <p class="col-12">
                     <label>
                         Quantité désirée : 
                         <input type="number" name="qtt" value="1" class="form-control">
