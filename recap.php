@@ -20,17 +20,17 @@
         }
         else {
             echo "<main class='container'>",
-                    "<table class='table table-striped'>",
+                    "<table class='table table-striped table-bordered border-danger table-sm text-center'>",
                         "<thead>",
-                            "<tr class='table-primary'>",
-                                "<th>#</th>",
+                            "<tr class='table-primary table-bordered border-danger'>",
+                                "<th class='text-center'>#</th>",
                                 "<th>Nom</th>",
                                 "<th>Prix</th>",
                                 "<th>Quantité</th>",
                                 "<th>Total</th>",
                             "</tr>",
                     "</thead>",
-                    "<tbody>";
+                    "<tbody class='table-group-divider'>";
 
             $totalGeneral = 0;
             foreach($_SESSION['products'] as $index => $product) {
@@ -45,8 +45,8 @@
             }
 
             echo   "<tr>",
-                        "<td colspan=4>Total général : </td>",
-                        "<td class='table-warning'><strong>".number_format($totalGeneral, 2, ",", "&nbsp;")."&nbsp;€</strong></td>",
+                        "<td colspan=4 class='text-end'>Total général : </td>",
+                        "<td><strong class='bg-warning'>".number_format($totalGeneral, 2, ",", "&nbsp;")."&nbsp;€</strong></td>",
                     "</tr>",
 
                     "</tbody>",
