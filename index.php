@@ -10,9 +10,9 @@
         <title>Ajout produit</title>
     </head>
     <body>
-        <main class="container text-center">
-            <h1>Ajouter un produit</h1>
-            <form action="traitement.php" method="post">
+        <main class="container vh-100 text-center bg-info border border-warning rounded">
+            <h1 class="row col-12 h-25 justify-content-center align-items-end ">Ajouter un produit</h1>
+            <form action="traitement.php" method="post" class="row col-12 h-25">
                 <p>
                     <label>
                         Nom du produit : 
