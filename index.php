@@ -10,22 +10,30 @@
         <title>Ajout produit</title>
     </head>
     <body>
-        <main class="container vh-100 text-center bg-info border border-warning rounded">
-            <h1 class="row col-12 h-25 justify-content-center align-items-end ">Ajouter un produit</h1>
-            <form action="traitement.php" method="post" class="row col-12 h-25">
-                <p>
+        <div class="container">
+            <nav class="navbar navbar-expand-lg bg-body-tertiary">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    <li class="nav-item"><a class="nav-link" href="index.php">Ajouter un produit</a></li>
+                    <li class="nav-item"><a class="nav-link" href="recap.php">Récapitulation</a></li>
+                <ul>
+            </nav>
+        </div>
+        <main class="container text-center vh-100 d-flex flex-wrap align-content-center">
+            <h1 class="row col-12 justify-content-center align-items-end align-self-center">Ajouter un produit</h1>
+            <form action="traitement.php" method="post" class="row col-12 justify-content-center">
+                <p class="col-3">
                     <label>
                         Nom du produit : 
                         <input type="text" name="name" class="form-control">
                     </label>
                 </p>
-                <p>
+                <p class="col-3">
                     <label>
                         Prix du produit :
                         <input type="number" step="any" name="price" class="form-control">
                     </label>
                 </p>
-                <p>
+                <p class="col-3">
                     <label>
                         Quantité désirée : 
                         <input type="number" name="qtt" value="1" class="form-control">

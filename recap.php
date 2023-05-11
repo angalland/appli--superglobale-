@@ -19,7 +19,13 @@
             echo "<p>Aucun produit en session....</p>";
         }
         else {
-            echo "<main class='container'>",
+            echo "<main class='container text-center vh-100 d-flex flex-wrap align-content-center'>",
+                    "<nav>",
+                        "<ul>",
+                            "<li><a href='index.php'>Ajouter un produit</a></li>",
+                            "<li><a href='recap.php'>Récapitulation</a></li>",
+                        "<ul>",
+                    "</nav>",
                     "<table class='table table-striped table-bordered border-danger table-sm text-center'>",
                         "<thead>",
                             "<tr class='table-primary table-bordered border-danger'>",
