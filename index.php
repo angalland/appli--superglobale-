@@ -44,7 +44,15 @@
                     <input type="submit" name="submit" value="Ajouter le produit" class="btn btn-primary">
                 </p>
             </form>
-            <p class="bg-success w-25 rounded-pill text-center text-white">Il y a <?= count($_SESSION['products']) ?> produits ajoutés</p>
+            <p class="bg-success w-25 rounded-pill text-center text-white">
+                <?php
+                 if(($_SESSION) != null) {
+                echo "Il y a ".count($_SESSION['products'])." produits ajoutés.";
+                } else {
+                    echo "Aucun produit ajouté.";
+                }; 
+                ?> 
+            </p>
             <?php 
                 if (isset($_SESSION['alert'])){
                     echo $_SESSION['alert'];

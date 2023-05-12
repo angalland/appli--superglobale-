@@ -16,7 +16,19 @@
     <?php
         // var_dump($_SESSION);
         if(!isset($_SESSION['products']) || empty($_SESSION['products'])){
-            echo "<p>Aucun produit en session....</p>";
+            echo "<nav class='mt-3'>",
+                     "<ul class='nav justify-content-center nav-pills'>",
+                        "<li class='nav-item'>",
+                            "<a class='nav-link active' href='index.php'>Ajouter un produit</a>",
+                        "</li>",
+                         "<li class='nav-item'>",
+                             "<a class='nav-link' href='recap.php'>Récapitulatif</a>",
+                        "</li>",
+                    "<ul>",
+                "</nav>",
+                "<main class='container d-flex vh-100 justify-content-center align-items-center'>", 
+                    "<p class='h1'>Aucun produit en session....</p>";
+                 "</main>";
         }
         else {
             echo 
