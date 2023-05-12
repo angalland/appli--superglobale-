@@ -66,10 +66,15 @@
                         "<td>".number_format($product['total'], 2, ",", "&nbsp;")."&nbsp;€</td>",
                         "<td>
                             <form action='supprimer.php' method='get'>
-                                <button class='btn btn-danger'>supprimer</button>
+                                <input type='submit' name='submit' value='supprimer' class='btn btn-danger'>
                             </form>",
                         "</td>",
                     "</tr>";
+                    if (isset($_GET['supprimer'])){
+                        foreach ($_SESSION['products'] as $index => $product) {
+                            unset($index);
+                        }
+                    }
                 $totalGeneral+= $product['total'];
             }
 
@@ -78,7 +83,7 @@
                         "<td><strong class='bg-warning'>".number_format($totalGeneral, 2, ",", "&nbsp;")."&nbsp;€</strong></td>",
                         "<td>
                             <form action='supprimer.php' method='get'>
-                                <button class='btn btn-danger'>Supprimer tous les produits </button>
+                                <input type='submit' name='submit' value='supprimer tous les produits' class='btn btn-danger'>
                             </form>",
                     "</tr>",
 
