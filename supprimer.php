@@ -12,7 +12,7 @@ if (isset($_GET['supprimerTableau'])){
 }
 
 if (isset($_GET['+'])){
-    $_SESSION['products']['qtt']++;
+    $rpoduct['qtt']++;
 } 
 
 
