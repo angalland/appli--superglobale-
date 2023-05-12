@@ -19,6 +19,10 @@
                 "total" => $price*$qtt
             ];
 
+            if ($_GET['+']){
+                $product['qtt']++;
+            }
+
             $_SESSION['alert'] = "<p class='alert alert-success w-25' role='alert'>Le produit ".$product['name']." a bien été ajouté !</p>";
 
             $_SESSION['products'][] = $product;
