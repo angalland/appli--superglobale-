@@ -32,8 +32,7 @@
         }
         else {
             echo 
-            "<main class='container mt-3'>",
-            "<nav>",
+            "<nav class='mt-3'>",
                 "<ul class='nav justify-content-center nav-pills'>",
                     "<li class='nav-item'>",
                         "<a class='nav-link active' href='index.php'>Ajouter un produit</a>",
@@ -43,6 +42,7 @@
                     "</li>",
                 "<ul>",
             "</nav>",
+            "<main class='container d-flex vh-100 justify-content-center align-items-start flex-column'>",
                     "<table class='table table-striped table-bordered border-danger table-sm text-center mt-3'>",
                         "<thead>",
                             "<tr class='table-primary table-bordered border-danger'>",
