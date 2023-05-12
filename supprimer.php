@@ -11,4 +11,10 @@ if (isset($_GET['supprimerTableau'])){
     unset($_SESSION['products']);
 }
 
+if (isset($_GET['+'])){
+    $quantite = $_SESSION['products']['qtt'];
+    $quantite++;
+} 
+
+
 header('Location:recap.php');

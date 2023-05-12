@@ -62,7 +62,15 @@
                         "<td>".$index."</td>",
                         "<td>".$product['name']."</td>",
                         "<td>".number_format($product['price'], 2, ",", "&nbsp;")."&nbsp;€</td>",
-                        "<td>".$product['qtt']."</td>",
+                        "<td>
+                            <form action='' method='get' class='btn'>
+                                <input type='submit' name='+' value='+' class='btn btn-primary'>
+                            </form>"
+                            .$product['qtt'].
+                            "<form action='' method='get' class='btn'>
+                                <input type='submit' name='-' value='-' class='btn btn-primary'>
+                            </form>
+                        </td>",
                         "<td>".number_format($product['total'], 2, ",", "&nbsp;")."&nbsp;€</td>",
                         "<td>
                             <form action='supprimer.php' method='get'>
