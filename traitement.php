@@ -11,9 +11,7 @@
         
 
         if($name && $price && $qtt){
-            if ($_GET['+']){
-                $product['qtt']++;
-            }
+
             $product = [
                 "name"  => $name,
                 "price" => $price,
@@ -22,7 +20,8 @@
             ];
 
             if (isset($_GET['+'])){
-                $_SESSION['products'][$product]['qtt']++;
+                $nouvelleQtt = $qtt++;
+                $nouvelleQtt =+ array_replace($product['qtt']);
             };
 
             $_SESSION['alert'] = "<p class='alert alert-success w-25' role='alert'>Le produit ".$product['name']." a bien été ajouté !</p>";
