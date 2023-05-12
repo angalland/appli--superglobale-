@@ -66,6 +66,7 @@
                         "<td>".number_format($product['total'], 2, ",", "&nbsp;")."&nbsp;€</td>",
                         "<td>
                             <form action='traitement.php' method='get'>
+                                <input type='hidden' name='index' value='".$index."'>
                                 <input type='submit' name='supprimer' value='supprimer' class='btn btn-danger'>
                             </form>",
                         "</td>",
