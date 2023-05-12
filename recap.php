@@ -65,7 +65,7 @@
                         "<td>".$product['qtt']."</td>",
                         "<td>".number_format($product['total'], 2, ",", "&nbsp;")."&nbsp;€</td>",
                         "<td>
-                            <form action='' method='get'>
+                            <form action='supprimer.php' method='get'>
                                 <button class='btn btn-danger'>supprimer</button>
                             </form>",
                         "</td>",
@@ -77,8 +77,8 @@
                         "<td colspan=4 class='text-end'>Total général : </td>",
                         "<td><strong class='bg-warning'>".number_format($totalGeneral, 2, ",", "&nbsp;")."&nbsp;€</strong></td>",
                         "<td>
-                            <form action='' method='get'>
-                                <input type='submit' name='submit' value='Supprimer tous les produits' class='btn btn-danger'>
+                            <form action='supprimer.php' method='get'>
+                                <button class='btn btn-danger'>Supprimer tous les produits </button>
                             </form>",
                     "</tr>",
 
