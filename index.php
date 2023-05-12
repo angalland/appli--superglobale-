@@ -17,7 +17,7 @@
             <nav>
                 <ul class="nav justify-content-center nav-pills">
                     <li class="nav-item"><a class="nav-link" href="index.php">Ajouter un produit</a></li>
-                    <li class="nav-item"><a class="nav-link active" href="recap.php">Récapitulation</a></li>
+                    <li class="nav-item"><a class="nav-link active" href="recap.php">Récapitulatif</a></li>
                 <ul>
             </nav>
             <h1 class="row col-12">Ajouter un produit</h1>
@@ -41,7 +41,7 @@
                     </label>
                 </p>
                 <p>
-                    <input type="submit" name="submit" value="Ajouter le produit" class="btn btn-primary">
+                    <input type="submit" name="submit" value="Ajouter le produit" class="btn btn-primary" id="boutton">
                 </p>
             </form>
             <p class="bg-success w-25 rounded-pill text-center text-white">
@@ -53,15 +53,16 @@
                 }; 
                 ?> 
             </p>
-            <?php 
+             <?php 
                 if (isset($_SESSION['alert'])){
                     echo $_SESSION['alert'];
                     unset($_SESSION['alert']);
                 }
             ?>
+           </p>
         </main> 
-        
-        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" crossorigin="anonymous"></script>
+
+       <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" crossorigin="anonymous"></script>
 
     </body>
 </html>
