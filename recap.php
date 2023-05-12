@@ -65,16 +65,12 @@
                         "<td>".$product['qtt']."</td>",
                         "<td>".number_format($product['total'], 2, ",", "&nbsp;")."&nbsp;€</td>",
                         "<td>
-                            <form action='supprimer.php' method='get'>
-                                <input type='submit' name='submit' value='supprimer' class='btn btn-danger'>
+                            <form action='traitement.php' method='get'>
+                                <input type='submit' name='supprimer' value='supprimer' class='btn btn-danger'>
                             </form>",
                         "</td>",
                     "</tr>";
-                    if (isset($_GET['supprimer'])){
-                        foreach ($_SESSION['products'] as $index => $product) {
-                            unset($index);
-                        }
-                    }
+
                 $totalGeneral+= $product['total'];
             }
 
@@ -82,8 +78,8 @@
                         "<td colspan=4 class='text-end'>Total général : </td>",
                         "<td><strong class='bg-warning'>".number_format($totalGeneral, 2, ",", "&nbsp;")."&nbsp;€</strong></td>",
                         "<td>
-                            <form action='supprimer.php' method='get'>
-                                <input type='submit' name='submit' value='supprimer tous les produits' class='btn btn-danger'>
+                            <form action='traitement.php' method='get'>
+                                <input type='submit' name='supprimerTableau' value='supprimer tous les produits' class='btn btn-danger'>
                             </form>",
                     "</tr>",
 

@@ -23,10 +23,19 @@
 
             $_SESSION['products'][] = $product;
 
+           
+
         } else {
 
             $_SESSION['alert'] = "<p class='alert alert-warning w-25 ' role='alert'>Votre produit n'a pas été ajouté, il est incorrect ! </p>";
         }
     }
 
+    if (isset($_GET['supprimer'])){
+        unset($_SESSION['products'][$product]);
+    }
+
+    if (isset($_GET['supprimerTableau'])){
+        unset($_SESSION['products']);
+    }
     header("Location:index.php");
