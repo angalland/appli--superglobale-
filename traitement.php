@@ -18,12 +18,16 @@
                 "qtt"   => $qtt,
                 "total" => $price*$qtt
             ];
+
             $_SESSION['alert'] = "<p class='alert alert-success w-25' role='alert'>Le produit ".$product['name']." a bien été ajouté !</p>";
+
             $_SESSION['products'][] = $product;
 
         } else {
+
             $_SESSION['alert'] = "<p class='alert alert-warning w-25 ' role='alert'>Votre produit n'a pas été ajouté, il est incorrect ! </p>";
         }
     }
+
 
     header("Location:index.php");
