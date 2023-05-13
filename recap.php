@@ -63,10 +63,18 @@
                         "<td>".$product['name']."</td>",
                         "<td>".number_format($product['price'], 2, ",", "&nbsp;")."&nbsp;€</td>",
                         "<td>
-                            <form action='traitement.php' method='get' class='btn'>
+                            <form action='supprimer.php' method='get' class='btn'>
+                                <input type='hidden' name='indexQtt' value='".$product['qtt']."'>
                                 <input type='submit' name='+' value='+' class='btn btn-primary'>
-                            </form>"
-                            .$product['qtt'].
+                            </form>";
+                            if (isset($_GET['+'])) {
+                                $nouvelleQtt = $product['qtt'];
+                                $nouvelleQtt++;  
+                                echo $nouvelleQtt;
+                            } else {
+                                echo $product['qtt'];
+                            };
+                            echo                            
                             "<form action='supprimer.php' method='get' class='btn'>
                                 <input type='submit' name='-' value='-' class='btn btn-primary'>
                             </form>
