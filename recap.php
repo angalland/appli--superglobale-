@@ -63,23 +63,19 @@
                         "<td>".$product['name']."</td>",
                         "<td>".number_format($product['price'], 2, ",", "&nbsp;")."&nbsp;€</td>",
                         "<td>
-                            <form action='supprimer.php' method='get' class='btn'>
-                                <input type='hidden' name='indexQtt' value='".$product['qtt']."'>
-                                <input type='submit' name='+' value='+' class='btn btn-primary'>
-                            </form>";
-                            if (isset($_GET['+'])) {
-                                $nouvelleQtt = $product['qtt'];
-                                $nouvelleQtt++;  
-                                echo $nouvelleQtt;
-                            } else {
-                                echo $product['qtt'];
-                            };
-                            echo                            
-                            "<form action='supprimer.php' method='get' class='btn'>
-                                <input type='submit' name='-' value='-' class='btn btn-primary'>
+                            <form action='traitement_qtt.php' method='post' class='btn'>
+                                <input type='hidden' name='productIndex' value='".$index."'>
+                                <input type='hidden' name='modifierQtt' value='+'>
+                                <input type='submit' name='submit' value='+' class='btn btn-primary'>
+                            </form>" 
+                            .$product['qtt'].                                                    
+                            "<form action='traitement_qtt.php' method='post' class='btn'>
+                                <input type='hidden' name='productIndex' value='".$index."'>
+                                <input type='hidden' name='modifierQtt' value='-'>
+                                <input type='submit' name='submit' value='-' class='btn btn-primary'>
                             </form>
                         </td>",
-                        "<td>".number_format($product['total'], 2, ",", "&nbsp;")."&nbsp;€</td>",
+                        "<td>".number_format($product['qtt']*$product['price'], 2, ",", "&nbsp;")."&nbsp;€</td>",
                         "<td>
                             <form action='supprimer.php' method='get'>
                                 <input type='hidden' name='index' value='".$index."'>
@@ -88,7 +84,7 @@
                         "</td>",
                     "</tr>";
 
-                $totalGeneral+= $product['total'];
+                $totalGeneral+= $product['qtt']*$product['price'];
             }
 
             echo   "<tr>",
