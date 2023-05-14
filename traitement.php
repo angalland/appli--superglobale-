@@ -16,7 +16,7 @@
                 "name"  => $name,
                 "price" => $price,
                 "qtt"   => $qtt,
-                "total" => $price*$qtt
+                // "total" => $price*$qtt
             ];
 
             if (isset($_GET['+'])){
