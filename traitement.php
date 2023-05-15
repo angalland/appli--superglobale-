@@ -29,7 +29,7 @@
                             "qtt"   => $qtt,
                             // "total" => $price*$qtt sera traité directement sur la page recap.php
                         ];
-            
+                        
                         //Envoie un message lorsque l'utilisateur a ajouté un produit  
                         $_SESSION['alert'] = "<p class='alert alert-success w-25' role='alert'>Le produit ".$product['name']." a bien été ajouté !</p>";
                         
@@ -90,21 +90,21 @@
                     die;
                     break;
 
-                // case 'deleteAll' :                                  
-                // // unset($_SESSION['products']); // supprime $_SESSION['products']
-                // // $_SESSION['alert'] = "<p class='alert alert-danger w-25 ' role='alert'>Vous avez supprimé tous les produits ! </p>";
-                // // header('Location:recap.php'); // renvoie a la page recap.php cette page est inaccessible pour l'utilisateur
-                // // die;
-                // // break;
-                
-                case'deleteAll':                                
-                    foreach ($_SESSION['products'] as $index => $product){
-                    unset($_SESSION['products'][$index]);
-                }
-                $_SESSION['alert'] = "<p class='alert alert-danger w-25 ' role='alert'>Vous avez supprimé tous les produits ! </p>";
+                case 'deleteAll' :                                  
+                unset($_SESSION['products']); // supprime $_SESSION['products']
+                $_SESSION['alertSupprimer'] = "<p class='alert alert-danger w-25 ' role='alert'>Vous avez supprimé tous les produits ! </p>";
                 header('Location:recap.php'); // renvoie a la page recap.php cette page est inaccessible pour l'utilisateur
                 die;
                 break;
+                
+                // case'deleteAll':                                
+                //     foreach ($_SESSION['products'] as $index => $product){
+                //     unset($_SESSION['products'][$index]);
+                // }
+                // $_SESSION['alert'] = "<p class='alert alert-danger w-25 ' role='alert'>Vous avez supprimé tous les produits ! </p>";
+                // header('Location:recap.php'); // renvoie a la page recap.php cette page est inaccessible pour l'utilisateur
+                // die;
+                // break;
 
             }
     }

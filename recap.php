@@ -27,8 +27,12 @@
         // var_dump($_SESSION);
         if(!isset($_SESSION['products']) || empty($_SESSION['products'])){ // vérifie si $_SESSION['products'] est non déclaré et null alors
             echo
-                "<main class='container d-flex vh-100 justify-content-center align-items-center'>", 
+                "<main class='container d-flex flex-column vh-100 justify-content-center align-items-center'>", 
                     "<p class='h1'>Aucun produit en session....</p>";
+                    if (isset($_SESSION['alertSupprimer'])){ // si il y a un $_SESSION['alertSupprimer'] alors
+                        echo $_SESSION['alertSupprimer'];    // renvoie $_SESSION['alertSupprimer']
+                        unset($_SESSION['alertSupprimer']);  //Détruit $_SESSION['alertSupprimer'] des qu'on recharge la page, c'est pour que le message d'alert ne reste pas permanent sur la page
+                    }        
                  "</main>";
         }
         else { // sinon (si elle est déclaré ou non null = il existe un $_SESSION['products'] = on a créer des produits)
@@ -82,9 +86,6 @@
                         "<td colspan=3 class='text-end'>Total général : </td>",
                         "<td><strong class='bg-warning'>".number_format($totalGeneral, 2, ",", "&nbsp;")."&nbsp;€</strong></td>", // renvoie le total général
                         "<td>",
-                            // "<form action='supprimer.php' method='get'>", // créer un formulaire qui renvoie les données vers supprimer.php avec la methode get
-                            //     "<input type='submit' name='supprimerTableau' value='supprimer tous les produits' class='btn btn-danger'>", // créer le bouton supprimer avec type=submit
-                            // "</form>",
                             "<a href='traitement.php?action=deleteAll'>",                                
                                 "<button type='submit' name='supprimerTableau' class='btn btn-danger'>supprimer tous les produits</button>",
                             "</a>",
@@ -94,9 +95,9 @@
                     "</tbody>",
                 "</table>";
             echo "<p class='bg-success w-25 rounded-pill text-center text-white'>Il y a ".count($_SESSION['products'])." produits ajoutés</p>"; // Renvoie le nombre total de produits dans le tableau SESSION 
-            if (isset($_SESSION['alertSupprimer'])){ // si il y a un $_SESSION['alert'] alors
-                echo $_SESSION['alertSupprimer'];    // renvoie $_SESSION['alert']
-                unset($_SESSION['alertSupprimer']);  //Détruit $_SESSION['alert'] des qu'on recharge la page, c'est pour que le message d'alert ne reste pas permanent sur la page
+            if (isset($_SESSION['alertSupprimer'])){ // si il y a un $_SESSION['alertSupprimer'] alors
+                echo $_SESSION['alertSupprimer'];    // renvoie $_SESSION['alertSupprimer']
+                unset($_SESSION['alertSupprimer']);  //Détruit $_SESSION['alertSupprimer'] des qu'on recharge la page, c'est pour que le message d'alert ne reste pas permanent sur la page
             }               
                 "</main>";
         }   
