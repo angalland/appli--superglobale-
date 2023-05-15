@@ -3,7 +3,7 @@
 session_start(); // fait appelle a la session
 
 if (isset($_GET['supprimer'])){ // si $_GET['supprimer'] est déclarer = si on appuie sur le bouton supprimer alors
-    $indexClef = $_GET['index']; // crée une variable qui prend la valeur de l'index
+    $indexClef = $_GET['index']; // crée une variable qui prend la valeur de l'index qu'on a par ailleur récupérer dans la boucle avec type=hidden
     unset($_SESSION['products'][$indexClef]); // supprime du tableau $_SESSION les éléments ayant l'index pris audessus
 }
 
