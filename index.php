@@ -24,7 +24,13 @@
                             <path d="M8 1a2.5 2.5 0 0 1 2.5 2.5V4h-5v-.5A2.5 2.5 0 0 1 8 1zm3.5 3v-.5a3.5 3.5 0 1 0-7 0V4H1v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V4h-3.5zM2 5h12v9a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1V5z"/>
                             </svg> 
                             <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
-                                <?= count($_SESSION['products']) ?>+
+                            <?php
+                                if(!isset($_SESSION['products']) || empty($_SESSION['products'])){
+                                    echo "0";
+                                } else {
+                                    echo  "+ ".count($_SESSION['products']);
+                                }
+                            ?>
                             <span class="visually-hidden">unread messages</span>
                         </a>
                     </li>
@@ -56,13 +62,6 @@
             </form>
             <p class="bg-success w-25 rounded-pill text-center text-white">
                 <?php
-                //  if(($_SESSION['products']) != null || $_SESSION != 0 || $_SESSION != false) { // Si il y a un $_SESSION de créer alors
-                // echo "Il y a ".count($_SESSION['products'])." produits ajoutés."; // renvoie le nombre total d'element dans $_SESSION['products']
-                // } elseif ($_SESSION['products'] == null ){
-                //     echo "Aucun produit ajouté."; // sinon renvoie cette phrase;
-                // } else {
-                //     echo "";
-                // }
                 if(!isset($_SESSION['products']) || empty($_SESSION['products'])){
                 echo "Aucun produit ajouté";
                 } else {
@@ -70,7 +69,7 @@
                 }
                 ?> 
             </p>
-             <?php 
+                <?php
                 if (isset($_SESSION['alert'])){ // si il y a un $_SESSION['alert'] alors
                     echo $_SESSION['alert'];    // renvoie $_SESSION['alert']
                     unset($_SESSION['alert']);  //Détruit $_SESSION['alert'] des qu'on recharge la page, c'est pour que le message d'alert ne reste pas permanent sur la page
