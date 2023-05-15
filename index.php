@@ -22,7 +22,7 @@
                 <ul>
             </nav>
             <h1 class="row col-12">Ajouter un produit</h1>
-            <form action="traitement.php" method="post" class="row col-12 justify-content-center"> <!-- formulaire pour ajouter un produit, les données sont envoyé sur la page traitement.php avec la methode post -->
+            <form action="traitement.php?action=addProduct" method="post" class="row col-12 justify-content-center"> <!-- formulaire pour ajouter un produit, les données sont envoyé sur la page traitement.php avec la methode post -->
                 <p class="col-12">
                     <label>
                         Nom du produit : 

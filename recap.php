@@ -54,13 +54,13 @@
                         "<td>".$product['name']."</td>", // renvoie le nom du roduit
                         "<td>".number_format($product['price'], 2, ",", "&nbsp;")."&nbsp;€</td>", // renvoie le prix sous forme de 2 décimale max, séparateur virgule.
                         "<td>",
-                            "<form action='traitement_qtt.php' method='post' class='btn'>",  //crée un formumaire qui renvoie les données sur traitement_qtt
+                            "<form action='traitement.php?action=traitement_qtt' method='post' class='btn'>",  //crée un formumaire qui renvoie les données sur traitement_qtt
                                 "<input type='hidden' name='productIndex' value='".$index."'>", //renvoie un élément qui ne peut etre ni modifier ni vue par l'utilisateur ici la valeur d'index
                                 "<input type='hidden' name='modifierQtt' value='+'>", // ici la valeur '+'
                                 "<input type='submit' name='submit' value='+' class='btn btn-primary'>", // crée le bouton + avec type=submit
                             "</form>" 
                             .$product['qtt']. // renvoie la quantité                                              
-                            "<form action='traitement_qtt.php' method='post' class='btn'>", 
+                            "<form action='traitement.php?action=traitement_qtt' method='post' class='btn'>", 
                                "<input type='hidden' name='productIndex' value='".$index."'>",
                                 "<input type='hidden' name='modifierQtt' value='-'>", // ici la valeur '-'
                                 "<input type='submit' name='submit' value='-' class='btn btn-primary'>", // crée le bouton - avec type=submit
@@ -68,10 +68,10 @@
                         "</td>",
                         "<td>".number_format($product['qtt']*$product['price'], 2, ",", "&nbsp;")."&nbsp;€</td>", // renvoie le total du prix (qtt*prix) sous format 2 décimale, sépareteur virgule
                         "<td>",
-                            "<form action='supprimer.php' method='get'>",  // créer un formulaire qui renvoie les données vers la page suprrimer.php avec la méthode get
-                                "<input type='hidden' name='index' value='".$index."'>", // récupere l'index
-                                "<input type='submit' name='supprimer' value='supprimer' class='btn btn-danger'>", // crée le bouton supprimer avec type=submit
-                            "</form>",
+                            "<a href='traitement.php?action=deleteOne&id=".$index."'>",  // créer un formulaire qui renvoie les données vers la page suprrimer.php avec la méthode get
+                               
+                                "<button type='submit' name='supprimer' value='supprimer' class='btn btn-danger'>supprimer</button>", // crée le bouton supprimer avec type=submit
+                            "</a>",
                         "</td>",
                     "</tr>";
 
@@ -92,7 +92,12 @@
             echo "<p class='bg-success w-25 rounded-pill text-center text-white'>Il y a ".count($_SESSION['products'])." produits ajoutés</p>", // Renvoie le nombre total de produits dans le tableau SESSION
                 "</main>";
         }
-    ?>
+   
+                if (isset($_SESSION['alert'])){ // si il y a un $_SESSION['alert'] alors
+                    echo $_SESSION['alert'];    // renvoie $_SESSION['alert']
+                    unset($_SESSION['alert']);  //Détruit $_SESSION['alert'] des qu'on recharge la page, c'est pour que le message d'alert ne reste pas permanent sur la page
+                }
+            ?>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" crossorigin="anonymous"></script>
 </body>
 </html>
