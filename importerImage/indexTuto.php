@@ -3,25 +3,29 @@
          
     session_start();
 
-    if (isset($_FILES["file"])){
-        $tmpName = $_FILES["file"]['tmp_name'];
+    if (isset($_FILES["file"])){ // vérifie que le fichier ai bien été enregistré
+
+        // Récupere les informations du fichiers
+        $tmpName = $_FILES["file"]['tmp_name']; 
         $name = $_FILES["file"]["name"];
         $type = $_FILES["file"]["type"];
         $error = $_FILES["file"]["error"];
         $size = $_FILES["file"]["size"];
 
-        //PhotoAnthony1.jpg = $name
-        //['PhotoAnthony1', 'jpg']
+        // separe la chaine de caractere $name a chaque fois qu'il a un "."
         $tabExtension = explode('.', $name);
-        // var_dump($tabExtension)."</br>";
+
+        // Prend le dernier element de $tabExtension et le renvoie en minuscule
         $extension = strtolower(end($tabExtension));
-        // var_dump($extension);
+
+        // Introduit une variable ayant pour valeur un int
         $tailleMax = 3000000;
 
         //Tableau des extensions qu'on autorise 
         $extensionAutorisees = ['jpg', 'jpeg', 'gif', 'png'];
         
-        if(in_array($extension, $extensionAutorisees) && $size <= $tailleMax && $error == 0 ){
+        if(in_array($extension, $extensionAutorisees) && $size <= $tailleMax && $error == 0 ){ // vérifie que $extension soit compris dans $extensionAutorisees et que la taille du fichier soit <= a la valeur de $tailleMax et que le fichier ne renvoie aucune erreure
+
             $uniqueName = uniqid('', true);
             $fileName = $uniqueName.'.'.$extension;
             move_uploaded_file($tmpName, './upload/'.$fileName);
@@ -29,9 +33,9 @@
             $fichier = [
                 "filename" => $fileName,
             ];
-            // var_dump($fichier);
+
             $_SESSION['fichiers'][] = $fichier;
-            var_dump($_SESSION['fichiers']);
+
 
         } else {
             echo "mauvaise extension ou taille trop importante ou erreure";
