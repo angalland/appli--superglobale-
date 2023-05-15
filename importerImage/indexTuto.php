@@ -26,18 +26,23 @@
         
         if(in_array($extension, $extensionAutorisees) && $size <= $tailleMax && $error == 0 ){ // vérifie que $extension soit compris dans $extensionAutorisees et que la taille du fichier soit <= a la valeur de $tailleMax et que le fichier ne renvoie aucune erreure
 
+            // génere un nom unique ex: 5f586bf96dcd38.73540086
             $uniqueName = uniqid('', true);
+            // on contatene $uniqueName avec $extension = 5f586bf96dcd38.73540086.jpg
             $fileName = $uniqueName.'.'.$extension;
-            move_uploaded_file($tmpName, './upload/'.$fileName);
+            //transfere le fichier img ($tmpName etant le chemin ou il est sur l'ordinateur dans le fichier /upload/ et lui assigne $fileName)
+            move_uploaded_file($tmpName, './upload/'.$fileName); 
 
+            // créer une variable tableau des $fileName
             $fichier = [
                 "filename" => $fileName,
             ];
 
+            // crée un tableau associatif 'fichiers' des $fichier
             $_SESSION['fichiers'][] = $fichier;
 
 
-        } else {
+        } else { // renvoie cette phrase si les conditions ne sont pas vérifier
             echo "mauvaise extension ou taille trop importante ou erreure";
         }
 
@@ -56,17 +61,22 @@
     <title>Tuto importer une image</title>
 </head>
 <body>
-    <form action="indexTuto.php" method="post" enctype="multipart/form-data">
+    <form action="indexTuto.php" method="post" enctype="multipart/form-data"> <!-- récupére le fichier ne pas oublier 'enctype='multiart/form-data'' lorsqu'on veut télécharger un fichier -->
         <label for="file">Fichier</label>
-        <input type="file" name="file">
+        <input type="file" name="file"> <!-- enregistrer avec file -->
         <button type="submit">Enregistrer</button>
     </form>
     <h2>Mes images</h2>
     <?php
     
-     if (isset($_FILES["file"])) {
+     if (isset($_FILES["file"])) { // vérifie qu'un fichier a été enregistrer
+
+        // boucle qui lie les tableaux associatifs $_SESSION['fichiers']
        foreach ($_SESSION['fichiers'] as $index => $fichier){
+
+        // renvoie une balise img concatene au $filename du tableau $fichier = affiche l'img telecharger
         echo "<img src='./upload/".$fichier['filename']."' width='200px' height='200px'>";
+        
        }
      };    
     ?>
