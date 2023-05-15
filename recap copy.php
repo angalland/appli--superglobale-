@@ -28,7 +28,7 @@
                                 if(!isset($_SESSION['products']) || empty($_SESSION['products'])){
                                     echo "0";
                                 } else {
-                                    echo  "+ ".count($_SESSION['products']);
+                                    echo  count($_SESSION['products']);
                                 }
                             ?>
                         <span class="visually-hidden">unread messages</span>

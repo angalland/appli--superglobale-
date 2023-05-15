@@ -28,7 +28,7 @@
                                 if(!isset($_SESSION['products']) || empty($_SESSION['products'])){ // si une session n'est pas instancié alors
                                     echo "0"; // renvoie 0
                                 } else {      // sinon 
-                                    echo  "+ ".count($_SESSION['products']); // renvoie + et le nombre d'élément session
+                                    echo  count($_SESSION['products']); // renvoie + et le nombre d'élément session
                                 }
                             ?>
                             <span class="visually-hidden">unread messages</span>
