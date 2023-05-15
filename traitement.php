@@ -60,41 +60,41 @@
                 break;
 
                 
-                case 'traitement_qtt' :
-                    if(isset($_POST['submit'])){ // si la variable $_post['submit'] est déclaré = si on a appuyer sur le bouton + ou -
-                        $indexInput = filter_input(INPUT_POST, "productIndex", FILTER_VALIDATE_INT); // créer une variable = a la valeur de l'index recuperer via type=hidden
-                        $qttModifier = filter_input(INPUT_POST, "modifierQtt"); // créer une variable = a la valeur de 'modifierQtt' récuperer via type=hidden
+            case 'traitement_qtt' :
+                if(isset($_POST['submit'])){ // si la variable $_post['submit'] est déclaré = si on a appuyer sur le bouton + ou -
+                    $indexInput = filter_input(INPUT_POST, "productIndex", FILTER_VALIDATE_INT); // créer une variable = a la valeur de l'index recuperer via type=hidden
+                    $qttModifier = filter_input(INPUT_POST, "modifierQtt"); // créer une variable = a la valeur de 'modifierQtt' récuperer via type=hidden
                     
-                        foreach ($_SESSION['products'] as $index => $product) { // on fait une boucle sur $_SESSION['products'] en lui assignant un index
-                            if ($index == $indexInput) {  // si l'index = l'index récuperer plus haut alors
-                                if ($qttModifier == '+') {  // si la valeur de qttModifier récupérer plus haut = '+' alors
-                                    $_SESSION['products'][$index]['qtt'] +=1;  // on ajoute 1 a la valeur de qtt dans le tableau SESSION
-                                } else { //sinon 
-                                    if ($_SESSION['products'][$index]['qtt'] >= 2){  // si la valeur de qtt dans le tableau SESSION > 0 alors
-                                    $_SESSION['products'][$index]['qtt'] -=1; // on enleve 1 a la valeur de qtt dans le tableau SESSION
-                                    } elseif ($_SESSION['products'][$index]['qtt'] == 1) {
-                                       unset($_SESSION['products'][$index]);
-                                       $_SESSION['alertSupprimer'] = "<p class='alert alert-danger w-25 ' role='alert'>Le produit ".$product['name']." a bien été supprimé ! </p>";
-                                    }
+                    foreach ($_SESSION['products'] as $index => $product) { // on fait une boucle sur $_SESSION['products'] en lui assignant un index
+                        if ($index == $indexInput) {  // si l'index = l'index récuperer plus haut alors
+                            if ($qttModifier == '+') {  // si la valeur de qttModifier récupérer plus haut = '+' alors
+                                $_SESSION['products'][$index]['qtt'] +=1;  // on ajoute 1 a la valeur de qtt dans le tableau SESSION
+                            } else { //sinon 
+                                if ($_SESSION['products'][$index]['qtt'] >= 2){  // si la valeur de qtt dans le tableau SESSION > 0 alors
+                                $_SESSION['products'][$index]['qtt'] -=1; // on enleve 1 a la valeur de qtt dans le tableau SESSION
+                                } elseif ($_SESSION['products'][$index]['qtt'] == 1) {
+                                    unset($_SESSION['products'][$index]);
+                                    $_SESSION['alertSupprimer'] = "<p class='alert alert-danger w-25 ' role='alert'>Le produit ".$product['name']." a bien été supprimé ! </p>";
                                 }
                             }
                         }
                     }
+                }
                     
-                    header('Location:recap.php'); // renvoie sur la page recap.php
-                    die;
-                    break;
+                header('Location:recap.php'); // renvoie sur la page recap.php
+                die;
+                break;
 
-                case 'deleteOne' :
-                    $indexClef = $_GET['id']; // crée une variable qui prend la valeur de l'index qu'on a par ailleur récupérer dans la boucle avec type=hidden
-                    $_SESSION['alertSupprimer'] = "<p class='alert alert-danger w-25 ' role='alert'>Le produit ". $_SESSION['products'][$indexClef]['name'] ." a bien été supprimé ! </p>";
+            case 'deleteOne' :
+                $indexClef = $_GET['id']; // crée une variable qui prend la valeur de l'index qu'on a par ailleur récupérer dans la boucle avec type=hidden
+                $_SESSION['alertSupprimer'] = "<p class='alert alert-danger w-25 ' role='alert'>Le produit ". $_SESSION['products'][$indexClef]['name'] ." a bien été supprimé ! </p>";
                    
-                    unset($_SESSION['products'][$indexClef]); // supprime du tableau $_SESSION les éléments ayant l'index pris audessus
-                    header("Location:recap.php"); //Redirection vers recap.php pour que l'utilisateur ne puisse pas atteindre la page traitement.php
-                    die;
-                    break;
+                unset($_SESSION['products'][$indexClef]); // supprime du tableau $_SESSION les éléments ayant l'index pris audessus
+                header("Location:recap.php"); //Redirection vers recap.php pour que l'utilisateur ne puisse pas atteindre la page traitement.php
+                die;
+                break;
 
-                case 'deleteAll' :                                  
+            case 'deleteAll' :                                  
                 unset($_SESSION['products']); // supprime $_SESSION['products']
                 $_SESSION['alertSupprimer'] = "<p class='alert alert-danger w-25 ' role='alert'>Vous avez supprimé tous les produits ! </p>";
                 header('Location:recap.php'); // renvoie a la page recap.php cette page est inaccessible pour l'utilisateur
