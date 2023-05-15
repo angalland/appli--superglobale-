@@ -17,13 +17,11 @@
                     // Filtre pour vérifié les données saisies par l'utilisateur
                     $name = filter_input(INPUT_POST, "name", FILTER_SANITIZE_STRING);
                     $price = filter_input(INPUT_POST, "price", FILTER_VALIDATE_FLOAT, FILTER_FLAG_ALLOW_FRACTION,);
-                    $qtt = filter_input(INPUT_POST, "qtt", FILTER_VALIDATE_INT);
-            
-                    //Envoie un message lorsque l'utilisateur a ajouté un produit       
+                    $qtt = filter_input(INPUT_POST, "qtt", FILTER_VALIDATE_INT);       
             
                     if($name && $price && $qtt){ // Cette condition vérifie si les filtres ont bien fonctionné, que les variables renvoient tous sauf false, null ou 0.
 
-                        if ($price > 0) { // vérifie que $price soit positif alors
+                        if ($price > 0 && $qtt > 0) { // vérifie que $price et $qtt soit positif alors
             
                         $product = [ //Mets les information d'un produits dans un tableau assiocatif
                             "name"  => $name,
@@ -42,7 +40,12 @@
                         sort($_SESSION['products']);
 
                         } else { // sinon renvoie cette alerte
-                            $_SESSION['alert'] = "<p class='alert alert-danger w-25' role='alert'>Le prix du produit doit être un nombre décimal positif ! Le produit n'a pas été ajouté</p>";
+                            if ($price <= 0){
+                                $_SESSION['alert'] = "<p class='alert alert-danger w-25' role='alert'>Le prix du produit doit être un nombre décimal positif ! Le produit n'a pas été ajouté</p>";
+                            }
+                            if ($qtt <= 0 ){
+                                $_SESSION['alert'] = "<p class='alert alert-danger w-25' role='alert'>La quantité du produit doit être un nombre entier positif ! Le produit n'a pas été ajouté</p>";
+                            }
                         }
             
                     } else { //Les filtres ont renvoyé false, null ou 0
@@ -81,20 +84,27 @@
 
                 case 'deleteOne' :
                     $indexClef = $_GET['id']; // crée une variable qui prend la valeur de l'index qu'on a par ailleur récupérer dans la boucle avec type=hidden
-                    $_SESSION['alert'] = "<p class='alert alert-danger w-25 ' role='alert'>Le produit ". $_SESSION['products'][$indexClef]['name'] ." a bien été supprimé ! </p>";
+                    $_SESSION['alertSupprimer'] = "<p class='alert alert-danger w-25 ' role='alert'>Le produit ". $_SESSION['products'][$indexClef]['name'] ." a bien été supprimé ! </p>";
                     unset($_SESSION['products'][$indexClef]); // supprime du tableau $_SESSION les éléments ayant l'index pris audessus
-                    
-                    header("Location:recap.php"); //Redirection vers index.php pour que l'utilisateur ne puisse pas atteindre la page traitement.php
+                    header("Location:recap.php"); //Redirection vers recap.php pour que l'utilisateur ne puisse pas atteindre la page traitement.php
                     die;
                     break;
 
-                case 'deleteAll' :                   
-                // if (isset($_GET['supprimerTableau'])){ // Si $_GE['supprimerTableau'] est déclarer = si on appuie sur le bouton supprimer tableau alors
-                unset($_SESSION['products']); // supprime $_SESSION['products']
-                // }
+                // case 'deleteAll' :                                  
+                // // unset($_SESSION['products']); // supprime $_SESSION['products']
+                // // $_SESSION['alert'] = "<p class='alert alert-danger w-25 ' role='alert'>Vous avez supprimé tous les produits ! </p>";
+                // // header('Location:recap.php'); // renvoie a la page recap.php cette page est inaccessible pour l'utilisateur
+                // // die;
+                // // break;
+                
+                case'deleteAll':                                foreach ($_SESSION['products'] as $index => $product){
+                    unset($_SESSION['products'][$index]);
+                }
+                $_SESSION['alert'] = "<p class='alert alert-danger w-25 ' role='alert'>Vous avez supprimé tous les produits ! </p>";
                 header('Location:recap.php'); // renvoie a la page recap.php cette page est inaccessible pour l'utilisateur
                 die;
                 break;
+
             }
     }
    

@@ -45,13 +45,14 @@
                     <input type="submit" name="submit" value="Ajouter le produit" class="btn btn-primary" id="boutton">
                 </p>
             </form>
-            <p class="bg-success w-25 rounded-pill text-center text-white">
+            <p class="bg-success rounded-pill text-center text-white">
                 <?php
-                 if(($_SESSION) != null) { // Si il y a un $_SESSION de créer alors
-                echo "Il y a ".count($_SESSION['products'])." produits ajoutés."; // renvoie le nombre total d'element dans $_SESSION['products']
+                 if(($_SESSION) != null || $_SESSION != 0 || $_SESSION != false) { // Si il y a un $_SESSION de créer alors
+                echo "Il y a ".count($_SESSION)." produits ajoutés."; // renvoie le nombre total d'element dans $_SESSION['products']
                 } else {
                     echo "Aucun produit ajouté."; // sinon renvoie cette phrase
-                }; 
+                };
+                
                 ?> 
             </p>
              <?php 
