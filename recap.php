@@ -13,35 +13,26 @@
     <title>Recapitulatif des produits</title>
 </head>
 <body>
+        <nav class='mt-3'>
+            <ul class='nav justify-content-center nav-pills'>
+                <li class='nav-item'>
+                    <a class='nav-link active' href='index.php'>Ajouter un produit</a>
+                </li>
+                <li class='nav-item'>
+                    <a class='nav-link' href='recap.php'>Récapitulatif</a>
+                </li>
+            <ul>
+        </nav>
     <?php
         // var_dump($_SESSION);
         if(!isset($_SESSION['products']) || empty($_SESSION['products'])){ // vérifie si $_SESSION['products'] est non déclaré et null alors
-            echo "<nav class='mt-3'>",
-                     "<ul class='nav justify-content-center nav-pills'>",
-                        "<li class='nav-item'>",
-                            "<a class='nav-link active' href='index.php'>Ajouter un produit</a>",
-                        "</li>",
-                         "<li class='nav-item'>",
-                             "<a class='nav-link' href='recap.php'>Récapitulatif</a>",
-                        "</li>",
-                    "<ul>",
-                "</nav>",
+            echo
                 "<main class='container d-flex vh-100 justify-content-center align-items-center'>", 
                     "<p class='h1'>Aucun produit en session....</p>";
                  "</main>";
         }
         else { // sinon (si elle est déclaré ou non null = il existe un $_SESSION['products'] = on a créer des produits)
-            echo 
-            "<nav class='mt-3'>",
-                "<ul class='nav justify-content-center nav-pills'>",
-                    "<li class='nav-item'>",
-                        "<a class='nav-link active' href='index.php'>Ajouter un produit</a>",
-                    "</li>",
-                    "<li class='nav-item'>",
-                        "<a class='nav-link' href='recap.php'>Récapitulatif</a>",
-                    "</li>",
-                "<ul>",
-            "</nav>",
+            echo            
             "<main class='container d-flex vh-100 justify-content-center align-items-start flex-column'>",
                     "<table class='table table-striped table-bordered border-danger table-sm text-center mt-3'>", // créer un tableau 
                         "<thead>",
