@@ -22,6 +22,8 @@
                     //Envoie un message lorsque l'utilisateur a ajouté un produit       
             
                     if($name && $price && $qtt){ // Cette condition vérifie si les filtres ont bien fonctionné, que les variables renvoient tous sauf false, null ou 0.
+
+                        if ($price > 0) { // vérifie que $price soit positif alors
             
                         $product = [ //Mets les information d'un produits dans un tableau assiocatif
                             "name"  => $name,
@@ -38,6 +40,10 @@
             
                         // fonction qui trie le tableau par ordre alphabétique
                         sort($_SESSION['products']);
+
+                        } else { // sinon renvoie cette alerte
+                            $_SESSION['alert'] = "<p class='alert alert-danger w-25' role='alert'>Le prix du produit doit être un nombre décimal positif ! Le produit n'a pas été ajouté</p>";
+                        }
             
                     } else { //Les filtres ont renvoyé false, null ou 0
             
@@ -82,7 +88,14 @@
                     die;
                     break;
 
-        }
+                case 'deleteAll' :                   
+                // if (isset($_GET['supprimerTableau'])){ // Si $_GE['supprimerTableau'] est déclarer = si on appuie sur le bouton supprimer tableau alors
+                unset($_SESSION['products']); // supprime $_SESSION['products']
+                // }
+                header('Location:recap.php'); // renvoie a la page recap.php cette page est inaccessible pour l'utilisateur
+                die;
+                break;
+            }
     }
    
     

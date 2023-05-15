@@ -82,9 +82,13 @@
                         "<td colspan=3 class='text-end'>Total général : </td>",
                         "<td><strong class='bg-warning'>".number_format($totalGeneral, 2, ",", "&nbsp;")."&nbsp;€</strong></td>", // renvoie le total général
                         "<td>",
-                            "<form action='supprimer.php' method='get'>", // créer un formulaire qui renvoie les données vers supprimer.php avec la methode get
-                                "<input type='submit' name='supprimerTableau' value='supprimer tous les produits' class='btn btn-danger'>", // créer le bouton supprimer avec type=submit
-                            "</form>",
+                            // "<form action='supprimer.php' method='get'>", // créer un formulaire qui renvoie les données vers supprimer.php avec la methode get
+                            //     "<input type='submit' name='supprimerTableau' value='supprimer tous les produits' class='btn btn-danger'>", // créer le bouton supprimer avec type=submit
+                            // "</form>",
+                            "<a href='traitement.php?action=deleteAll'>",                                
+                                "<button type='submit' name='supprimerTableau' class='btn btn-danger'>supprimer tous les produits</button>",
+                            "</a>",
+
                     "</tr>",
 
                     "</tbody>",
