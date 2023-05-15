@@ -70,8 +70,11 @@
                                 if ($qttModifier == '+') {  // si la valeur de qttModifier récupérer plus haut = '+' alors
                                     $_SESSION['products'][$index]['qtt'] +=1;  // on ajoute 1 a la valeur de qtt dans le tableau SESSION
                                 } else { //sinon 
-                                    if ($_SESSION['products'][$index]['qtt'] > 0){  // si la valeur de qtt dans le tableau SESSION > 0 alors
+                                    if ($_SESSION['products'][$index]['qtt'] >= 2){  // si la valeur de qtt dans le tableau SESSION > 0 alors
                                     $_SESSION['products'][$index]['qtt'] -=1; // on enleve 1 a la valeur de qtt dans le tableau SESSION
+                                    } elseif ($_SESSION['products'][$index]['qtt'] == 1) {
+                                       unset($_SESSION['products'][$index]);
+                                       $_SESSION['alertSupprimer'] = "<p class='alert alert-danger w-25 ' role='alert'>Le produit ".$product['name']." a bien été supprimé ! </p>";
                                     }
                                 }
                             }
@@ -81,10 +84,10 @@
                     header('Location:recap.php'); // renvoie sur la page recap.php
                     die;
                     break;
-
+ $_SESSION['alertSupprimer'] = "<p class='alert alert-danger w-25 ' role='alert'>Le produit ". $_SESSION['products'][$indexClef]['name'] ." a bien été supprimé ! </p>";
                 case 'deleteOne' :
                     $indexClef = $_GET['id']; // crée une variable qui prend la valeur de l'index qu'on a par ailleur récupérer dans la boucle avec type=hidden
-                    $_SESSION['alertSupprimer'] = "<p class='alert alert-danger w-25 ' role='alert'>Le produit ". $_SESSION['products'][$indexClef]['name'] ." a bien été supprimé ! </p>";
+                   
                     unset($_SESSION['products'][$indexClef]); // supprime du tableau $_SESSION les éléments ayant l'index pris audessus
                     header("Location:recap.php"); //Redirection vers recap.php pour que l'utilisateur ne puisse pas atteindre la page traitement.php
                     die;
@@ -96,16 +99,6 @@
                 header('Location:recap.php'); // renvoie a la page recap.php cette page est inaccessible pour l'utilisateur
                 die;
                 break;
-                
-                // case'deleteAll':                                
-                //     foreach ($_SESSION['products'] as $index => $product){
-                //     unset($_SESSION['products'][$index]);
-                // }
-                // $_SESSION['alert'] = "<p class='alert alert-danger w-25 ' role='alert'>Vous avez supprimé tous les produits ! </p>";
-                // header('Location:recap.php'); // renvoie a la page recap.php cette page est inaccessible pour l'utilisateur
-                // die;
-                // break;
-
             }
     }
    
