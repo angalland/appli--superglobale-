@@ -85,7 +85,7 @@
                                 // boucle qui lie les tableaux associatifs $_SESSION['fichiers']
                                 foreach ($_SESSION as $index => $filename){
                                 // renvoie une balise img concatene au $filename du tableau $fichier = affiche l'img telecharger
-                                echo "<img src='./uploadImage/".$filename."' width='200px' height='200px'>";
+                                echo "<img src='./uploadImage/".$_SESSION[$index]."' width='200px' height='200px'>";
                                 }
                             ?>
                             <?php
