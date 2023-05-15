@@ -53,6 +53,47 @@
                         // envoie un message 
                         $_SESSION['alert'] = "<p class='alert alert-warning w-25 ' role='alert'>Votre produit n'a pas été ajouté, il est incorrect ! </p>";
                     }
+
+                    if (isset($_FILES["file"])){ // vérifie que le fichier ai bien été enregistré
+
+                        // Récupere les informations du fichiers
+                        $tmpName = $_FILES["file"]['tmp_name']; 
+                        $name = $_FILES["file"]["name"];
+                        $type = $_FILES["file"]["type"];
+                        $error = $_FILES["file"]["error"];
+                        $size = $_FILES["file"]["size"];
+                
+                        // separe la chaine de caractere $name a chaque fois qu'il a un "."
+                        $tabExtension = explode('.', $name);
+                
+                        // Prend le dernier element de $tabExtension et le renvoie en minuscule
+                        $extension = strtolower(end($tabExtension));
+                
+                        // Introduit une variable ayant pour valeur un int
+                        $tailleMax = 3000000;
+                
+                        //Tableau des extensions qu'on autorise 
+                        $extensionAutorisees = ['jpg', 'jpeg', 'gif', 'png'];
+                        
+                        if(in_array($extension, $extensionAutorisees) && $size <= $tailleMax && $error == 0 ){ // vérifie que $extension soit compris dans $extensionAutorisees et que la taille du fichier soit <= a la valeur de $tailleMax et que le fichier ne renvoie aucune erreure
+                
+                            // génere un nom unique ex: 5f586bf96dcd38.73540086
+                            $uniqueName = uniqid('', true);
+                            // on contatene $uniqueName avec $extension = 5f586bf96dcd38.73540086.jpg
+                            $fileName = $uniqueName.'.'.$extension;
+                            //transfere le fichier img ($tmpName etant le chemin ou il est sur l'ordinateur dans le fichier /upload/ et lui assigne $fileName)
+                            move_uploaded_file($tmpName, './uploadImage/'.$fileName); 
+                
+                            // créer une variable tableau des $fileName
+                            // $fichier = [
+                            //     "filename" => $fileName,
+                            // ];
+                
+                            // crée un tableau associatif 'fichiers' des $fichier
+                            // $_SESSION['fichiers'][] = $fichier;
+                            $_SESSION[] = $fileName;
+                        }
+                    }
                 }
             
                 header("Location:index.php"); //Redirection vers index.php pour que l'utilisateur ne puisse pas atteindre la page traitement.php
