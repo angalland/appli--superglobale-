@@ -97,7 +97,8 @@
                 // // die;
                 // // break;
                 
-                case'deleteAll':                                foreach ($_SESSION['products'] as $index => $product){
+                case'deleteAll':                                
+                    foreach ($_SESSION['products'] as $index => $product){
                     unset($_SESSION['products'][$index]);
                 }
                 $_SESSION['alert'] = "<p class='alert alert-danger w-25 ' role='alert'>Vous avez supprimé tous les produits ! </p>";

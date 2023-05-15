@@ -47,11 +47,13 @@
             </form>
             <p class="bg-success rounded-pill text-center text-white">
                 <?php
-                 if(($_SESSION) != null || $_SESSION != 0 || $_SESSION != false) { // Si il y a un $_SESSION de créer alors
-                echo "Il y a ".count($_SESSION)." produits ajoutés."; // renvoie le nombre total d'element dans $_SESSION['products']
+                 if(($_SESSION['products']) != null || $_SESSION != 0 || $_SESSION != false) { // Si il y a un $_SESSION de créer alors
+                echo "Il y a ".count($_SESSION['products'])." produits ajoutés."; // renvoie le nombre total d'element dans $_SESSION['products']
+                } elseif ($_SESSION['products'] == null ){
+                    echo "Aucun produit ajouté."; // sinon renvoie cette phrase;
                 } else {
-                    echo "Aucun produit ajouté."; // sinon renvoie cette phrase
-                };
+                    echo "";
+                }
                 
                 ?> 
             </p>
