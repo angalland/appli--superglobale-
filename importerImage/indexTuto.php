@@ -1,6 +1,7 @@
 <?php
-
-    var_dump($_FILES)."</br>";
+    // var_dump($_FILES)."</br>";
+         
+    session_start();
 
     if (isset($_FILES["file"])){
         $tmpName = $_FILES["file"]['tmp_name'];
@@ -24,6 +25,14 @@
             $uniqueName = uniqid('', true);
             $fileName = $uniqueName.'.'.$extension;
             move_uploaded_file($tmpName, './upload/'.$fileName);
+
+            $fichier = [
+                "filename" => $fileName,
+            ];
+            // var_dump($fichier);
+            $_SESSION['fichiers'][] = $fichier;
+            var_dump($_SESSION['fichiers']);
+
         } else {
             echo "mauvaise extension ou taille trop importante ou erreure";
         }
@@ -48,6 +57,15 @@
         <input type="file" name="file">
         <button type="submit">Enregistrer</button>
     </form>
+    <h2>Mes images</h2>
+    <?php
+    
+     if (isset($_FILES["file"])) {
+       foreach ($_SESSION['fichiers'] as $index => $fichier){
+        echo "<img src='./upload/".$fichier['filename']."' width='200px' height='200px'>";
+       }
+     };    
+    ?>
 
 </body>
 </html>
