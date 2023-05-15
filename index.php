@@ -22,13 +22,13 @@
                         <a class="nav-link active" href="recap.php">
                             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-bag" viewBox="0 0 16 16">
                             <path d="M8 1a2.5 2.5 0 0 1 2.5 2.5V4h-5v-.5A2.5 2.5 0 0 1 8 1zm3.5 3v-.5a3.5 3.5 0 1 0-7 0V4H1v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V4h-3.5zM2 5h12v9a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1V5z"/>
-                            </svg> 
-                            <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
+                            </svg>  <!-- importe une icone bootstraps en forme de panier -->
+                            <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger"> <!-- place un badge en position absolue de la <li> -->
                             <?php
-                                if(!isset($_SESSION['products']) || empty($_SESSION['products'])){
-                                    echo "0";
-                                } else {
-                                    echo  "+ ".count($_SESSION['products']);
+                                if(!isset($_SESSION['products']) || empty($_SESSION['products'])){ // si une session n'est pas instancié alors
+                                    echo "0"; // renvoie 0
+                                } else {      // sinon 
+                                    echo  "+ ".count($_SESSION['products']); // renvoie + et le nombre d'élément session
                                 }
                             ?>
                             <span class="visually-hidden">unread messages</span>

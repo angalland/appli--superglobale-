@@ -8,9 +8,9 @@
 
 
 
-    if (isset($_GET['action'])){
+    if (isset($_GET['action'])){ // vérifie que la méthode get nommé action est présent
        
-        switch($_GET['action']){
+        switch($_GET['action']){  // vérifie pour chaque méthode get['action], les conditions suivantes
             case 'addProduct' :
                 if(isset($_POST['submit'])){ // Vérification que l'utilisateur a bien appuyer sur le bouton ajouter produit
 
