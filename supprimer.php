@@ -11,9 +11,4 @@ if (isset($_GET['supprimerTableau'])){
     unset($_SESSION['products']);
 }
 
-if (isset($_GET['+'])){
-    $nouvelleQtt = $_GET['indexQtt'];
-    $nouvelleQtt++;
-};
-
 header('Location:recap.php');
