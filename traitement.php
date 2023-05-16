@@ -64,14 +64,11 @@
                         $size = $_FILES["file"]["size"];
                 
                         // separe la chaine de caractere $name a chaque fois qu'il a un "."
-                        $tabExtension = explode('.', $name);
-                
+                        $tabExtension = explode('.', $name);               
                         // Prend le dernier element de $tabExtension et le renvoie en minuscule
-                        $extension = strtolower(end($tabExtension));
-                
+                        $extension = strtolower(end($tabExtension));                
                         // Introduit une variable ayant pour valeur un int
-                        $tailleMax = 3000000;
-                
+                        $tailleMax = 3000000;                
                         //Tableau des extensions qu'on autorise 
                         $extensionAutorisees = ['jpg', 'jpeg', 'gif', 'png'];
                         
