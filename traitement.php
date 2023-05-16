@@ -64,7 +64,7 @@
                         ];
                         
                         //Envoie un message lorsque l'utilisateur a ajouté un produit  
-                        $_SESSION['alert'] = "<p class='alert alert-success w-25' role='alert'>Le produit ".$product['name']." a bien été ajouté !</p>";
+                        $_SESSION['alert'] = "<p class='alert alert-success text-center col-6' role='alert'>Le produit ".$product['name']." a bien été ajouté !</p>";
                         
                         // On enregistre le produit nouvellement créer dans la superglobale SESSION a qui on fournit une clef products, $_SESSION nous renverra donc un tableau associatif products => product
                         $_SESSION['products'][] = $product;
@@ -74,17 +74,17 @@
 
                         } else { // sinon renvoie cette alerte
                             if ($price <= 0){
-                                $_SESSION['alert'] = "<p class='alert alert-danger w-25' role='alert'>Le prix du produit doit être un nombre décimal positif ! Le produit n'a pas été ajouté</p>";
+                                $_SESSION['alert'] = "<p class='alert alert-danger text-center col-6 ' role='alert'>Le prix du produit doit être un nombre décimal positif ! Le produit n'a pas été ajouté</p>";
                             }
                             if ($qtt <= 0 ){
-                                $_SESSION['alert'] = "<p class='alert alert-danger w-25' role='alert'>La quantité du produit doit être un nombre entier positif ! Le produit n'a pas été ajouté</p>";
+                                $_SESSION['alert'] = "<p class='alert alert-danger text-center col-6' role='alert'>La quantité du produit doit être un nombre entier positif ! Le produit n'a pas été ajouté</p>";
                             }
                         }
             
                     } else { //Les filtres ont renvoyé false, null ou 0
             
                         // envoie un message 
-                        $_SESSION['alert'] = "<p class='alert alert-warning w-25 ' role='alert'>Votre produit n'a pas été ajouté, il est incorrect ! </p>";
+                        $_SESSION['alert'] = "<p class='alert alert-warning text-center col-6' role='alert'>Votre produit n'a pas été ajouté, il est incorrect ! </p>";
                     }
                    
                 }
@@ -109,7 +109,7 @@
                                 } elseif ($_SESSION['products'][$index]['qtt'] == 1) {
                                     unlink($_SESSION['products'][$index]['fichier']);
                                     unset($_SESSION['products'][$index]);
-                                    $_SESSION['alertSupprimer'] = "<p class='alert alert-danger w-25 ' role='alert'>Le produit ".$product['name']." a bien été supprimé ! </p>";
+                                    $_SESSION['alertSupprimer'] = "<p class='alert alert-danger text-center col-6' role='alert'>Le produit ".$product['name']." a bien été supprimé ! </p>";
                                 }
                             }
                         }
@@ -122,7 +122,7 @@
 
             case 'deleteOne' :
                 $indexClef = $_GET['id']; // crée une variable qui prend la valeur de l'index qu'on a par ailleur récupérer dans la boucle avec type=hidden
-                $_SESSION['alertSupprimer'] = "<p class='alert alert-danger w-25 ' role='alert'>Le produit ". $_SESSION['products'][$indexClef]['name'] ." a bien été supprimé ! </p>";
+                $_SESSION['alertSupprimer'] = "<p class='alert alert-danger text-center col-6 ' role='alert'>Le produit ". $_SESSION['products'][$indexClef]['name'] ." a bien été supprimé ! </p>";
                 unlink($_SESSION['products'][$indexClef]['fichier']);  
                 unset($_SESSION['products'][$indexClef]); // supprime du tableau $_SESSION les éléments ayant l'index pris audessus
                 header("Location:recap.php"); //Redirection vers recap.php pour que l'utilisateur ne puisse pas atteindre la page traitement.php
@@ -134,7 +134,7 @@
                 unlink($product['fichier']);
                 };
                 unset($_SESSION['products']); // supprime $_SESSION['products']
-                $_SESSION['alertSupprimer'] = "<p class='alert alert-danger w-25 ' role='alert'>Vous avez supprimé tous les produits !</p>";
+                $_SESSION['alertSupprimer'] = "<p class='alert alert-danger text-center col-6' role='alert'>Vous avez supprimé tous les produits !</p>";
                 header('Location:recap.php'); // renvoie a la page recap.php cette page est inaccessible pour l'utilisateur
                 die;
                 break;

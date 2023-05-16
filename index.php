@@ -14,8 +14,14 @@
         <?php
             session_start(); // Fait appelle a la session
         ?>
-        <main class="container my-5">
-            <nav> <!-- menu -->
+            <nav class=" mt-3 navbar navbar-expand-lg navbar-light bg-light">
+                <div class="container">
+                    <a class="navbar-brand" href="#"></a>
+                    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarTogglerDemo01" aria-controls="navbarTogglerDemo01" aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+                <div class="collapse navbar-collapse justify-content-center" id="navbarTogglerDemo01"> 
+                    <!-- menu -->
                 <ul class="nav justify-content-center nav-pills">
                     <li class="nav-item"><a class="nav-link active me-3" href="index.php">Ajouter un produit</a></li>
                     <li class="nav-item position-relative">
@@ -36,8 +42,9 @@
                     </li>
                 <ul>
             </nav>
+        <main class="container my-5">
             <h1 class="row col-12">Ajouter un produit</h1>
-            <form action="traitement.php?action=addProduct" method="post" enctype="multipart/form-data" class="row col-12 justify-content-center"> <!-- formulaire pour ajouter un produit, les données sont envoyé sur la page traitement.php avec la methode post -->
+            <form action="traitement.php?action=addProduct" method="post" enctype="multipart/form-data" class="row col-12 "> <!-- formulaire pour ajouter un produit, les données sont envoyé sur la page traitement.php avec la methode post -->
                 <p class="col-12">
                     <label>
                         Nom du produit : 
@@ -60,16 +67,16 @@
                     <label for='file'>Fichier</label>
                     <input type='file' name='file' class="form-control w-50">
                 </p>
-                <p>
+                <p class='col-12'>
                     <input type="submit" name="submit" value="Ajouter le produit" class="btn btn-primary" id="boutton">
                 </p>
             </form>
-            <p class="bg-success w-25 rounded-pill text-center text-white">
+            <p class="bg-success rounded-pill text-center text-white col-3">
                 <?php
                 if(!isset($_SESSION['products']) || empty($_SESSION['products'])){
                 echo "Aucun produit ajouté";
                 } else {
-                    echo "<p class='bg-success w-25 rounded-pill text-center text-white'>Il y a ".count($_SESSION['products'])." produits ajoutés</p>";
+                    echo "<p class='bg-success col-3 rounded-pill text-center text-white'>Il y a ".count($_SESSION['products'])." produits ajoutés</p>";
                 }
                 ?> 
             </p>

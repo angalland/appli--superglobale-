@@ -13,7 +13,13 @@
     <title>Recapitulatif des produits</title>
 </head>
 <body>
-        <nav class='mt-3'>
+        <nav class='mt-3 navbar navbar-expand-lg navbar-light bg-light'>
+            <div class="container">
+                <a class="navbar-brand" href="#"></a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarTogglerDemo01" aria-controls="navbarTogglerDemo01" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+            <div class="collapse justify-content-center navbar-collapse" id="navbarTogglerDemo01"> 
             <ul class='nav justify-content-center nav-pills'>
                 <li class='nav-item me-3'>
                     <a class='nav-link active' href='index.php'>Ajouter un produit</a>
@@ -51,22 +57,22 @@
         else { // sinon (si elle est déclaré ou non null = il existe un $_SESSION['products'] = on a créer des produits)
             echo            
             "<main class='container d-flex vh-100 justify-content-center align-items-start flex-column'>",
-                    "<table class='table table-striped table-bordered border-danger table-sm text-center mt-3'>", // créer un tableau 
+                    "<table class='table table-striped table-bordered border-danger table-sm text-center'>", // créer un tableau 
                         "<thead>",
                             "<tr class='table-primary table-bordered border-danger'>",
                                 // "<th class='text-center'>#</th>",
-                                "<th>Nom</th>",
-                                "<th>Prix</th>",
-                                "<th>Quantité</th>",
-                                "<th>Total</th>",
-                                "<th>Supprimer produit</th>",
+                                "<th scope='col'>Nom</th>",
+                                "<th scope='col'>Prix</th>",
+                                "<th scope='col'>Quantité</th>",
+                                "<th scope='col'>Total</th>",
+                                "<th scope='col'>Supprimer produit</th>",
                             "</tr>",
                     "</thead>",
                     "<tbody class='table-group-divider'>";
 
             $totalGeneral = 0; // créer une variable pour calculer le prix général
             foreach($_SESSION['products'] as $index => $product) {  //fait une boucle de $_SESSION['products'] en fournissant un $index pour chaque $product
-                echo "<tr>",
+                echo "<tr scope='row'>",
                         // "<td>".$index."</td>", // renvoie l'index
                         "<td>",
                             "<button type='button' class='btn btn-primary' data-bs-toggle='modal' data-bs-target='#".$product['name']."'>"
@@ -127,7 +133,7 @@
 
                     "</tbody>",
                 "</table>";
-            echo "<p class='bg-success w-25 rounded-pill text-center text-white'>Il y a ".count($_SESSION['products'])." produits ajoutés</p>"; // Renvoie le nombre total de produits dans le tableau SESSION 
+            echo "<p class='bg-success col-6 rounded-pill text-center text-white'>Il y a ".count($_SESSION['products'])." produits ajoutés</p>"; // Renvoie le nombre total de produits dans le tableau SESSION 
             if (isset($_SESSION['alertSupprimer'])){ // si il y a un $_SESSION['alertSupprimer'] alors
                 echo $_SESSION['alertSupprimer'];    // renvoie $_SESSION['alertSupprimer']
                 unset($_SESSION['alertSupprimer']);  //Détruit $_SESSION['alertSupprimer'] des qu'on recharge la page, c'est pour que le message d'alert ne reste pas permanent sur la page
@@ -139,15 +145,4 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" crossorigin="anonymous"></script>
 </body>
 </html>
-
-
- <!-- <?php
-                                // // boucle qui lie les tableaux associatifs $_SESSION['fichiers']
-                                // foreach ($_SESSION['fichiers'] as $index => $fichier){
-                                // // renvoie une balise img concatene au $filename du tableau $fichier = affiche l'img telecharger
-                                // echo "<img src='./uploadImage/".$fichier['fileName']."' width='200px' height='200px'>";
-                                // echo $index;
-                                // } -->
-
-                            ?>
                             
