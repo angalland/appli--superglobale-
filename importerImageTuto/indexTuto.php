@@ -33,18 +33,17 @@
             //transfere le fichier img ($tmpName etant le chemin ou il est sur l'ordinateur dans le fichier /upload/ et lui assigne $fileName)
             move_uploaded_file($tmpName, './upload/'.$fileName); 
 
-            // // créer une variable tableau des $fileName
-            // $fichier = [
-            //     "filename" => $fileName,
-            // ];
+            $cheminFichier ="./upload/".$fileName;
 
-            // // crée un tableau associatif 'fichiers' des $fichier
-            // $_SESSION['fichiers'][] = $fichier;
+            // créer une variable tableau des $fileName
+            $fichier = [
+                "filename" => $fileName,
+                "cheminFichier" => $cheminFichier,
+            ];
+
+            // crée un tableau associatif 'fichiers' des $fichier
+            $_SESSION['fichiers'][] = $fichier;
             
-            if (isset($_GET['supprimer'])){
-                file_exists($fileName);
-                unlink("./upload/.$fileName");
-               }
 
         } else { // renvoie cette phrase si les conditions ne sont pas vérifier
             echo "mauvaise extension ou taille trop importante ou erreure";
@@ -86,6 +85,26 @@
     <form action="indexTuto.php" method="get">
     <button type='submit' name='supprimer'>Supprimer les images</button>
     </form>
+    <?php 
+    
+    if (isset($_GET['supprimer'])){
+        foreach($_SESSION['fichiers'] as $index => $fichier){
+            if (file_exists($fichier['cheminFichier'])){
+                if (unlink($fichier['cheminFichier'])){
+                    echo "le fichier a été suprimé avec succes";
+                } else {
+                    echo "Une erreure s'est produite lors de la suppression du fichier";
+                }
+            } else {
+                echo "le fichier n'existe pas";
+            };
+       }
+    }
+    
+    
+    ?>
+
+
 
 </body>
 </html>
