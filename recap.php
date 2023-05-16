@@ -54,7 +54,7 @@
                     "<table class='table table-striped table-bordered border-danger table-sm text-center mt-3'>", // créer un tableau 
                         "<thead>",
                             "<tr class='table-primary table-bordered border-danger'>",
-                                "<th class='text-center'>#</th>",
+                                // "<th class='text-center'>#</th>",
                                 "<th>Nom</th>",
                                 "<th>Prix</th>",
                                 "<th>Quantité</th>",
@@ -67,7 +67,7 @@
             $totalGeneral = 0; // créer une variable pour calculer le prix général
             foreach($_SESSION['products'] as $index => $product) {  //fait une boucle de $_SESSION['products'] en fournissant un $index pour chaque $product
                 echo "<tr>",
-                        "<td>".$index."</td>", // renvoie l'index
+                        // "<td>".$index."</td>", // renvoie l'index
                         "<td>",
                             "<button type='button' class='btn btn-primary' data-bs-toggle='modal' data-bs-target='#".$product['name']."'>"
                             .$product['name'].
@@ -80,8 +80,7 @@
                                                 "<button type='button' class='btn-close' data-bs-dismiss='modal' aria-label='Close'></button>",
                                             "</div>",
                                             "<div class='modal-body'>",
-                                                "<img src='".$product['fichier']."' width='200px' height='200px'>"
-                                                .$product['fichier'].  
+                                                "<img src='".$product['fichier']."' witdh=100px height=100px>", 
                                             "</div>",
                                             "<div class='modal-footer'>",
                                                 "<button type='button' class='btn btn-secondary' data-bs-dismiss='modal'>Close</button>",
@@ -117,7 +116,7 @@
             }
 
             echo   "<tr>",
-                        "<td colspan=4 class='text-end'>Total général : </td>",
+                        "<td colspan=3 class='text-end'>Total général : </td>",
                         "<td><strong class='bg-warning'>".number_format($totalGeneral, 2, ",", "&nbsp;")."&nbsp;€</strong></td>", // renvoie le total général
                         "<td>",
                             "<a href='traitement.php?action=deleteAll'>",                                
