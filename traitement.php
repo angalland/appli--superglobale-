@@ -107,6 +107,7 @@
                                 if ($_SESSION['products'][$index]['qtt'] >= 2){  // si la valeur de qtt dans le tableau SESSION > 0 alors
                                 $_SESSION['products'][$index]['qtt'] -=1; // on enleve 1 a la valeur de qtt dans le tableau SESSION
                                 } elseif ($_SESSION['products'][$index]['qtt'] == 1) {
+                                    unlink($_SESSION['products'][$index]['fichier']);
                                     unset($_SESSION['products'][$index]);
                                     $_SESSION['alertSupprimer'] = "<p class='alert alert-danger w-25 ' role='alert'>Le produit ".$product['name']." a bien été supprimé ! </p>";
                                 }
