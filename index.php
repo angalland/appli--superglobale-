@@ -55,10 +55,10 @@
                         Quantité désirée : 
                         <input type="number" name="qtt" value="1" class="form-control">
                     </label>
-                </p>
-                <p class="col-12">
-                    <label for="file">Fichier</label>
-                    <input type="file" name="file"> 
+                </p>              
+                <p class='col-12'>
+                    <label for='file'>Fichier</label>
+                    <input type='file' name='file' class="form-control w-50">
                 </p>
                 <p>
                     <input type="submit" name="submit" value="Ajouter le produit" class="btn btn-primary" id="boutton">

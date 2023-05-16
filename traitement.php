@@ -86,7 +86,8 @@
                 
                             // créer une variable tableau des $fileName
                             $fichier = [
-                                "filename" => $fileName,
+                                "name" => $uniqueName,
+                                "fileName" => $fileName,
                             ];
                 
                             // crée un tableau associatif 'fichiers' des $fichier

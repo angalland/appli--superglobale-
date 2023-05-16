@@ -82,11 +82,11 @@
                             "<div class='modal-body'>";
                             ?>
                             <?php
-                                // boucle qui lie les tableaux associatifs $_SESSION['fichiers']
-                                foreach ($_SESSION['fichiers'] as $index => $fichier){
-                                // renvoie une balise img concatene au $filename du tableau $fichier = affiche l'img telecharger
-                                echo "<img src='./uploadImage/".$fichier['filename']."' width='200px' height='200px'>";
-                                }
+                                // // boucle qui lie les tableaux associatifs $_SESSION['fichiers']
+                                // foreach ($_SESSION['fichiers'] as $index => $fichier){
+                                // // renvoie une balise img concatene au $filename du tableau $fichier = affiche l'img telecharger
+                                // echo "<img src='./uploadImage/".$fichier['fileName']."' width='200px' height='200px'>";
+                                // }
                             ?>
                             <?php
                             echo
