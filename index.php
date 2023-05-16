@@ -63,7 +63,7 @@
                         <input type="number" name="qtt" value="1" class="form-control">
                     </label>
                 </p>              
-                <p class='col-12'>
+                <p class='col-6'>
                     <label for='file'>Fichier</label>
                     <input type='file' name='file' class="form-control w-50">
                 </p>
