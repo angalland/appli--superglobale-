@@ -101,7 +101,7 @@
                 break;
 
                 
-            case 'traitement_qtt' :
+            case 'traitement_qtt' : // verifie getaction=traitement_qtt
                 if(isset($_POST['submit'])){ // si la variable $_post['submit'] est déclaré = si on a appuyer sur le bouton + ou -
                     $indexInput = filter_input(INPUT_POST, "productIndex", FILTER_VALIDATE_INT); // créer une variable = a la valeur de l'index recuperer via type=hidden
                     $qttModifier = filter_input(INPUT_POST, "modifierQtt"); // créer une variable = a la valeur de 'modifierQtt' récuperer via type=hidden
@@ -113,7 +113,7 @@
                             } else { //sinon 
                                 if ($_SESSION['products'][$index]['qtt'] >= 2){  // si la valeur de qtt dans le tableau SESSION > 0 alors
                                 $_SESSION['products'][$index]['qtt'] -=1; // on enleve 1 a la valeur de qtt dans le tableau SESSION
-                                } elseif ($_SESSION['products'][$index]['qtt'] == 1) {
+                                } elseif ($_SESSION['products'][$index]['qtt'] == 1) { // et si la valeur de qtt = 1 alors on supprime le tableau session ainsi que le fichier qui lui est attribuer, un message d'alert apparait
                                     unlink($_SESSION['products'][$index]['fichier']);
                                     unset($_SESSION['products'][$index]);
                                     $_SESSION['alertSupprimer'] = "<p class='alert alert-danger text-center col-6' role='alert'>Le produit ".$product['name']." a bien été supprimé ! </p>";
@@ -127,18 +127,18 @@
                 die;
                 break;
 
-            case 'deleteOne' :
+            case 'deleteOne' : // vérifie le cas getaction=deleteOne
                 $indexClef = $_GET['id']; // crée une variable qui prend la valeur de l'index qu'on a par ailleur récupérer dans la boucle avec type=hidden
                 $_SESSION['alertSupprimer'] = "<p class='alert alert-danger text-center col-6 ' role='alert'>Le produit ". $_SESSION['products'][$indexClef]['name'] ." a bien été supprimé ! </p>";
-                unlink($_SESSION['products'][$indexClef]['fichier']);  
+                unlink($_SESSION['products'][$indexClef]['fichier']); // supprime le fichier associé a cette index 
                 unset($_SESSION['products'][$indexClef]); // supprime du tableau $_SESSION les éléments ayant l'index pris audessus
                 header("Location:recap.php"); //Redirection vers recap.php pour que l'utilisateur ne puisse pas atteindre la page traitement.php
                 die;
                 break;
 
-            case 'deleteAll' :
-                foreach ($_SESSION['products'] as $index => $product){
-                unlink($product['fichier']);
+            case 'deleteAll' : // vérifie le cas getaction=deleteAll
+                foreach ($_SESSION['products'] as $index => $product){ // Boucle sur le tableau $_SESSION
+                unlink($product['fichier']); // supprime les fichiers upload
                 };
                 unset($_SESSION['products']); // supprime $_SESSION['products']
                 $_SESSION['alertSupprimer'] = "<p class='alert alert-danger text-center col-6' role='alert'>Vous avez supprimé tous les produits !</p>";

@@ -14,12 +14,16 @@
 </head>
 <body>
         <nav class='mt-3 navbar navbar-expand-lg navbar-light bg-light'>
+
+            <!-- Menu burger -->
             <div class="container">
                 <a class="navbar-brand" href="#"></a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarTogglerDemo01" aria-controls="navbarTogglerDemo01" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
-            <div class="collapse justify-content-center navbar-collapse" id="navbarTogglerDemo01"> 
+            <div class="collapse justify-content-center navbar-collapse" id="navbarTogglerDemo01">
+
+            <!-- Menu -->
             <ul class='nav justify-content-center nav-pills'>
                 <li class='nav-item me-3'>
                     <a class='nav-link active' href='index.php'>Ajouter un produit</a>
@@ -76,9 +80,11 @@
                         // "<td>".$index."</td>", // renvoie l'index
                         "<td>",
                             "<button type='button' class='btn btn-primary' data-bs-toggle='modal' data-bs-target='#".$product['name']."'>"
-                            .$product['name'].
-                            "</button> ",              
-                                "<div class='modal fade' id='".$product['name']."' tabindex='-1' aria-labelledby='exampleModalLabel' aria-hidden='true'>",
+                            .$product['name']. // renvoie le nom sous formr de boutton qui servira a la modale
+                            "</button> ",
+
+                            //   Modale : affiche l'image dans une nouvelle fenetre modale
+                                "<div class='modal fade' id='".$product['name']."' tabindex='-1' aria-labelledby='exampleModalLabel' aria-hidden='true'>", // Recupere le nom pour assigner la modale au bouton du nom
                                     "<div class='modal-dialog'>",
                                         "<div class='modal-content'>",
                                             "<div class='modal-header'>",
@@ -86,7 +92,7 @@
                                                 "<button type='button' class='btn-close' data-bs-dismiss='modal' aria-label='Close'></button>",
                                             "</div>",
                                             "<div class='modal-body'>",
-                                                "<img src='".$product['fichier']."' witdh=200px height=200px>", 
+                                                "<img src='".$product['fichier']."' witdh=200px height=200px>",  // récupére le chemin d'acces au fichier du tableau
                                             "</div>",
                                             "<div class='modal-footer'>",
                                                 "<button type='button' class='btn btn-secondary' data-bs-dismiss='modal'>Close</button>",
@@ -94,10 +100,13 @@
                                         "</div>",
                                     "</div>",
                                 "</div>",
+
                         "</td>", // renvoie le nom du roduit
+
                         "<td>".number_format($product['price'], 2, ",", "&nbsp;")."&nbsp;€</td>", // renvoie le prix sous forme de 2 décimale max, séparateur virgule.
                         "<td>",
-                            "<form action='traitement.php?action=traitement_qtt' method='post' class='btn'>",  //crée un formumaire qui renvoie les données sur traitement_qtt
+
+                            "<form action='traitement.php?action=traitement_qtt' method='post' class='btn'>",  //crée un formumaire qui renvoie les données sur traitement_qtt?action=traitement_qtt
                                 "<input type='hidden' name='productIndex' value='".$index."'>", //renvoie un élément qui ne peut etre ni modifier ni vue par l'utilisateur ici la valeur d'index
                                 "<input type='hidden' name='modifierQtt' value='+'>", // ici la valeur '+'
                                 "<input type='submit' name='submit' value='+' class='btn btn-primary'>", // crée le bouton + avec type=submit
@@ -109,10 +118,11 @@
                                 "<input type='submit' name='submit' value='-' class='btn btn-primary'>", // crée le bouton - avec type=submit
                             "</form>",
                         "</td>",
+
                         "<td>".number_format($product['qtt']*$product['price'], 2, ",", "&nbsp;")."&nbsp;€</td>", // renvoie le total du prix (qtt*prix) sous format 2 décimale, sépareteur virgule
+
                         "<td>",
-                            "<a href='traitement.php?action=deleteOne&id=".$index."'>",  // créer un formulaire qui renvoie les données vers la page suprrimer.php avec la méthode get
-                               
+                            "<a href='traitement.php?action=deleteOne&id=".$index."'>",  //  renvoie les données vers la page traitement.php?action=deleteOne&
                                 "<button type='submit' name='supprimer' value='supprimer' class='btn btn-danger'>supprimer</button>", // crée le bouton supprimer avec type=submit
                             "</a>",
                         "</td>",
@@ -124,16 +134,18 @@
             echo   "<tr>",
                         "<td colspan=3 class='text-end'>Total général : </td>",
                         "<td><strong class='bg-warning'>".number_format($totalGeneral, 2, ",", "&nbsp;")."&nbsp;€</strong></td>", // renvoie le total général
-                        "<td>",
-                            "<a href='traitement.php?action=deleteAll'>",                                
+
+                        "<td>", // crée un bouton supprimer tous les produits
+                            "<a href='traitement.php?action=deleteAll'>", // renvoie les données vers la page traitement.php?action=deleteAll                               
                                 "<button type='submit' name='supprimerTableau' class='btn btn-danger'>supprimer tous les produits</button>",
                             "</a>",
 
                     "</tr>",
-
                     "</tbody>",
                 "</table>";
+
             echo "<p class='bg-success col-3 rounded-pill text-center text-white'>Il y a ".count($_SESSION['products'])." produits ajoutés</p>"; // Renvoie le nombre total de produits dans le tableau SESSION 
+            
             if (isset($_SESSION['alertSupprimer'])){ // si il y a un $_SESSION['alertSupprimer'] alors
                 echo $_SESSION['alertSupprimer'];    // renvoie $_SESSION['alertSupprimer']
                 unset($_SESSION['alertSupprimer']);  //Détruit $_SESSION['alertSupprimer'] des qu'on recharge la page, c'est pour que le message d'alert ne reste pas permanent sur la page
