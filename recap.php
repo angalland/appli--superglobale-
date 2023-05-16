@@ -80,7 +80,8 @@
                                                 "<button type='button' class='btn-close' data-bs-dismiss='modal' aria-label='Close'></button>",
                                             "</div>",
                                             "<div class='modal-body'>",
-                                                "<img src='".$product['fichier']."' width='200px' height='200px'>",  
+                                                "<img src='".$product['fichier']."' width='200px' height='200px'>"
+                                                .$product['fichier'].  
                                             "</div>",
                                             "<div class='modal-footer'>",
                                                 "<button type='button' class='btn btn-secondary' data-bs-dismiss='modal'>Close</button>",

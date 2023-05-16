@@ -46,7 +46,7 @@
                                 $fileName = $uniqueName.'.'.$extension;
                                 //transfere le fichier img ($tmpName etant le chemin ou il est sur l'ordinateur dans le fichier /upload/ et lui assigne $fileName)
                                 move_uploaded_file($tmpName, './uploadImage/'.$fileName);                     
-                            } 
+                            }
                 }
                 
                 $fichier = "./uploadImage/".$fileName;
@@ -124,12 +124,12 @@
                 $_SESSION['alertSupprimer'] = "<p class='alert alert-danger w-25 ' role='alert'>Le produit ". $_SESSION['products'][$indexClef]['name'] ." a bien été supprimé ! </p>";
                    
                 unset($_SESSION['products'][$indexClef]); // supprime du tableau $_SESSION les éléments ayant l'index pris audessus
-                unlink($_SESSION['products'][$indexClef]);
                 header("Location:recap.php"); //Redirection vers recap.php pour que l'utilisateur ne puisse pas atteindre la page traitement.php
                 die;
                 break;
 
             case 'deleteAll' :                                  
+                unlink($_SESSION['products']['fichier']);
                 unset($_SESSION['products']); // supprime $_SESSION['products']
                 $_SESSION['alertSupprimer'] = "<p class='alert alert-danger w-25 ' role='alert'>Vous avez supprimé tous les produits ! </p>";
                 header('Location:recap.php'); // renvoie a la page recap.php cette page est inaccessible pour l'utilisateur
