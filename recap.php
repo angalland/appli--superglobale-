@@ -54,7 +54,7 @@
                     "<table class='table table-striped table-bordered border-danger table-sm text-center mt-3'>", // créer un tableau 
                         "<thead>",
                             "<tr class='table-primary table-bordered border-danger'>",
-                                // "<th class='text-center'>#</th>",
+                                "<th class='text-center'>#</th>",
                                 "<th>Nom</th>",
                                 "<th>Prix</th>",
                                 "<th>Quantité</th>",
@@ -67,28 +67,27 @@
             $totalGeneral = 0; // créer une variable pour calculer le prix général
             foreach($_SESSION['products'] as $index => $product) {  //fait une boucle de $_SESSION['products'] en fournissant un $index pour chaque $product
                 echo "<tr>",
-                        // "<td>".$index."</td>", // renvoie l'index
+                        "<td>".$index."</td>", // renvoie l'index
                         "<td>",
-                            "<button type='button' class='btn btn-primary' data-bs-toggle='modal' data-bs-target='#exampleModal'>"
+                            "<button type='button' class='btn btn-primary' data-bs-toggle='modal' data-bs-target='#".$product['name']."'>"
                             .$product['name'].
                             "</button> ",              
-                            "<div class='modal fade' id='exampleModal' tabindex='-1' aria-labelledby='exampleModalLabel' aria-hidden='true'>",
-                                "<div class='modal-dialog'>",
-                                "<div class='modal-content'>",
-                                "<div class='modal-header'>",
-                                "<h1 class='modal-title fs-5' id='exampleModalLabel'>Image du produit</h1>",
-                                "<button type='button' class='btn-close' data-bs-dismiss='modal' aria-label='Close'></button>",
-                            "</div>",
-                            "<div class='modal-body'>",
-                            "<img src='./uploadImage/".$product['filename']."' width='200px' height='200px'>",                   
-                            "</div>",
-                            "<div class='modal-footer'>",
-                            "<button type='button' class='btn btn-secondary' data-bs-dismiss='modal'>Close</button>",
-                            // "<button type='button' class='btn btn-primary'>Save changes</button>
-                            "</div>",
-                            "</div>",
-                            "</div>",
-                            "</div>",
+                                "<div class='modal fade' id='".$product['name']."' tabindex='-1' aria-labelledby='exampleModalLabel' aria-hidden='true'>",
+                                    "<div class='modal-dialog'>",
+                                        "<div class='modal-content'>",
+                                            "<div class='modal-header'>",
+                                                "<h1 class='modal-title fs-5' id='exampleModalLabel'>Image du produit</h1>",
+                                                "<button type='button' class='btn-close' data-bs-dismiss='modal' aria-label='Close'></button>",
+                                            "</div>",
+                                            "<div class='modal-body'>",
+                                                "<img src='".$product['fichier']."' width='200px' height='200px'>",  
+                                            "</div>",
+                                            "<div class='modal-footer'>",
+                                                "<button type='button' class='btn btn-secondary' data-bs-dismiss='modal'>Close</button>",
+                                            "</div>",
+                                        "</div>",
+                                    "</div>",
+                                "</div>",
                         "</td>", // renvoie le nom du roduit
                         "<td>".number_format($product['price'], 2, ",", "&nbsp;")."&nbsp;€</td>", // renvoie le prix sous forme de 2 décimale max, séparateur virgule.
                         "<td>",
@@ -117,7 +116,7 @@
             }
 
             echo   "<tr>",
-                        "<td colspan=3 class='text-end'>Total général : </td>",
+                        "<td colspan=4 class='text-end'>Total général : </td>",
                         "<td><strong class='bg-warning'>".number_format($totalGeneral, 2, ",", "&nbsp;")."&nbsp;€</strong></td>", // renvoie le total général
                         "<td>",
                             "<a href='traitement.php?action=deleteAll'>",                                

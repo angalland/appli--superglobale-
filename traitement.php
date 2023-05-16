@@ -45,20 +45,12 @@
                                 // on contatene $uniqueName avec $extension = 5f586bf96dcd38.73540086.jpg
                                 $fileName = $uniqueName.'.'.$extension;
                                 //transfere le fichier img ($tmpName etant le chemin ou il est sur l'ordinateur dans le fichier /upload/ et lui assigne $fileName)
-                                move_uploaded_file($tmpName, './uploadImage/'.$fileName); 
-                    
-                                // // créer une variable tableau des $fileName
-                                // $fichier = [
-                                //     "name" => $uniqueName,
-                                //     "fileName" => $fileName,
-                                // ];
-                    
-                                // // crée un tableau associatif 'fichiers' des $fichier
-                                // $_SESSION['fichiers'][] = $fichier;
-                                
-                            }
+                                move_uploaded_file($tmpName, './uploadImage/'.$fileName);                     
+                            } 
                 }
-            
+                
+                $fichier = "./uploadImage/".$fileName;
+
                     if($name && $price && $qtt){ // Cette condition vérifie si les filtres ont bien fonctionné, que les variables renvoient tous sauf false, null ou 0.
 
                         if ($price > 0 && $qtt > 0) { // vérifie que $price et $qtt soit positif alors
@@ -67,7 +59,7 @@
                             "name"  => $name,
                             "price" => $price,
                             "qtt"   => $qtt,
-                            "filename" => $fileName,
+                            "fichier" => $fichier,
                             // "total" => $price*$qtt sera traité directement sur la page recap.php
                         ];
                         
@@ -132,6 +124,7 @@
                 $_SESSION['alertSupprimer'] = "<p class='alert alert-danger w-25 ' role='alert'>Le produit ". $_SESSION['products'][$indexClef]['name'] ." a bien été supprimé ! </p>";
                    
                 unset($_SESSION['products'][$indexClef]); // supprime du tableau $_SESSION les éléments ayant l'index pris audessus
+                unlink($_SESSION['products'][$indexClef]);
                 header("Location:recap.php"); //Redirection vers recap.php pour que l'utilisateur ne puisse pas atteindre la page traitement.php
                 die;
                 break;
