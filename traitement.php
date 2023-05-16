@@ -85,13 +85,13 @@
                             move_uploaded_file($tmpName, './uploadImage/'.$fileName); 
                 
                             // créer une variable tableau des $fileName
-                            // $fichier = [
-                            //     "filename" => $fileName,
-                            // ];
+                            $fichier = [
+                                "filename" => $fileName,
+                            ];
                 
                             // crée un tableau associatif 'fichiers' des $fichier
-                            // $_SESSION['fichiers'][] = $fichier;
-                            $_SESSION[] = $fileName;
+                            $_SESSION['fichiers'][] = $fichier;
+                            
                         }
                     }
                 }
