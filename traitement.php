@@ -3,11 +3,11 @@
 
     $nbSession = 0; // variable qui servira a compter le nombre de session
 
-    if (isset($_GET['action'])){ // vérifie que la méthode get nommé action est présent
+    if (isset($_GET['action'])){ // vérifie que get action soit présent dans l'url
        
-        switch($_GET['action']){  // vérifie pour chaque méthode get['action], les conditions suivantes
-            case 'addProduct' :
-                if(isset($_POST['submit'])){ // Vérification que l'utilisateur a bien appuyer sur le bouton ajouter produit
+        switch($_GET['action']){  // vérifie pour chaque get['action], les conditions suivantes
+            case 'addProduct' : // cas action='addProduct'
+                if(isset($_POST['submit'])){ // Vérifie que l'utilisateur a bien appuyer sur le bouton ajouter produit
 
                     // Filtre pour vérifié les données saisies par l'utilisateur
                     $name = filter_input(INPUT_POST, "name", FILTER_SANITIZE_STRING);
@@ -42,10 +42,16 @@
                                 $fileName = $uniqueName.'.'.$extension;
 
                                 //transfere le fichier img ($tmpName etant le chemin ou il est sur l'ordinateur dans le fichier /upload/ et lui assigne $fileName)
-                                move_uploaded_file($tmpName, './uploadImage/'.$fileName);                     
-                            } elseif (in_array($extension, $extensionAutorisees) == false) {
+                                move_uploaded_file($tmpName, './uploadImage/'.$fileName);
+
+                            } elseif (in_array($extension, $extensionAutorisees) == false) { // sinon
+
+                                // envoie un message d'alerte si la premiere condition n'est pas respecté et le fichier ne sera pas transmis
                                 $_SESSION['alertFichier'] = "<p class='alert alert-danger text-center col-6 ' role='alert'>Le fichier n'a pas été ajouté, vous devez transmettre des fichiers au format jpg, jpeg, gif ou png</p>";
-                            } elseif ($size > $tailleMax) {
+
+                            } elseif ($size > $tailleMax) { // sinon 
+
+                                // envoie un message d'alerte si la taille du fichier dépasse la taille autorisé
                                 $_SESSION['alertFichier'] = "<p class='alert alert-danger text-center col-6 ' role='alert'>Le fichier n'a pas été ajouté, vous devez transmettre des fichiers de moins de 3 méga</p>";
                             } 
                     }

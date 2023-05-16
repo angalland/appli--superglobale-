@@ -99,9 +99,9 @@
                     unset($_SESSION['alert']);  //Détruit $_SESSION['alert'] des qu'on recharge la page, c'est pour que le message d'alert ne reste pas permanent sur la page
                 }
 
-                if (isset($_SESSION['alertFichier'])){ // si il y a un $_SESSION['alert'] alors
-                    echo $_SESSION['alertFichier'];    // renvoie $_SESSION['alert']
-                    unset($_SESSION['alertFichier']);  //Détruit $_SESSION['alert'] des qu'on recharge la page, c'est pour que le message d'alert ne reste pas permanent sur la page
+                if (isset($_SESSION['alertFichier'])){ // si il y a un $_SESSION['alertFichier'] alors
+                    echo $_SESSION['alertFichier'];    // renvoie $_SESSION['alertFichier']
+                    unset($_SESSION['alertFichier']);  //Détruit $_SESSION['alertFichier'] des qu'on recharge la page, c'est pour que le message d'alert ne reste pas permanent sur la page
                 }
             ?>
            </p>
