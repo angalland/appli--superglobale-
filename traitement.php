@@ -129,7 +129,7 @@
                 break;
 
             case 'deleteAll' :                                  
-                unlink($_SESSION['products']['fichier']);
+                unlink($fichier);
                 unset($_SESSION['products']); // supprime $_SESSION['products']
                 $_SESSION['alertSupprimer'] = "<p class='alert alert-danger w-25 ' role='alert'>Vous avez supprimé tous les produits ! </p>";
                 header('Location:recap.php'); // renvoie a la page recap.php cette page est inaccessible pour l'utilisateur
