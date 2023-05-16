@@ -1,12 +1,7 @@
 <?php
     session_start(); // enregistre des données sur le serveur, ici on demarre une session. Cette fonction permet soit de demarrer une session soit de récupérer une séssion déja présente sur le serveur
 
-
-
-
-    $nbSession = 0;
-
-
+    $nbSession = 0; // variable qui servira a compter le nombre de session
 
     if (isset($_GET['action'])){ // vérifie que la méthode get nommé action est présent
        
@@ -20,7 +15,7 @@
                     $qtt = filter_input(INPUT_POST, "qtt", FILTER_VALIDATE_INT);
                     
                     
-                    if (isset($_FILES["file"])){ // vérifie que le fichier ai bien été enregistré
+                    if (isset($_FILES["file"])){ // vérifie que l'utilisateur a bien transmis son fichier 
 
                         // Récupere les informations du fichiers
                         $tmpName = $_FILES["file"]['tmp_name']; 
@@ -42,14 +37,20 @@
                     
                                 // génere un nom unique ex: 5f586bf96dcd38.73540086
                                 $uniqueName = uniqid('', true);
-                                // on contatene $uniqueName avec $extension = 5f586bf96dcd38.73540086.jpg
+
+                                // on ajoute $uniqueName avec $extension = 5f586bf96dcd38.73540086.jpg
                                 $fileName = $uniqueName.'.'.$extension;
+
                                 //transfere le fichier img ($tmpName etant le chemin ou il est sur l'ordinateur dans le fichier /upload/ et lui assigne $fileName)
                                 move_uploaded_file($tmpName, './uploadImage/'.$fileName);                     
-                            }
-                }
+                            } elseif (in_array($extension, $extensionAutorisees) == false) {
+                                $_SESSION['alertFichier'] = "<p class='alert alert-danger text-center col-6 ' role='alert'>Le fichier n'a pas été ajouté, vous devez transmettre des fichiers au format jpg, jpeg, gif ou png</p>";
+                            } elseif ($size > $tailleMax) {
+                                $_SESSION['alertFichier'] = "<p class='alert alert-danger text-center col-6 ' role='alert'>Le fichier n'a pas été ajouté, vous devez transmettre des fichiers de moins de 3 méga</p>";
+                            } 
+                    }
                 
-                $fichier = "./uploadImage/".$fileName;
+                    $fichier = "./uploadImage/".$fileName; // crée une variable qui = au chemin d'acces du fichier dans le dossier upload
 
                     if($name && $price && $qtt){ // Cette condition vérifie si les filtres ont bien fonctionné, que les variables renvoient tous sauf false, null ou 0.
 

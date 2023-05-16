@@ -15,13 +15,18 @@
             session_start(); // Fait appelle a la session
         ?>
             <nav class=" mt-3 navbar navbar-expand-lg navbar-light bg-light">
+
+                <!-- Menu burger -->
+
                 <div class="container">
                     <a class="navbar-brand" href="#"></a>
                     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarTogglerDemo01" aria-controls="navbarTogglerDemo01" aria-expanded="false" aria-label="Toggle navigation">
                         <span class="navbar-toggler-icon"></span>
                     </button>
-                <div class="collapse navbar-collapse justify-content-center" id="navbarTogglerDemo01"> 
-                    <!-- menu -->
+                <div class="collapse navbar-collapse justify-content-center" id="navbarTogglerDemo01">
+
+                <!-- menu -->
+
                 <ul class="nav justify-content-center nav-pills">
                     <li class="nav-item"><a class="nav-link active me-3" href="index.php">Ajouter un produit</a></li>
                     <li class="nav-item position-relative">
@@ -34,7 +39,7 @@
                                 if(!isset($_SESSION['products']) || empty($_SESSION['products'])){ // si une session n'est pas instancié alors
                                     echo "0"; // renvoie 0
                                 } else {      // sinon 
-                                    echo  count($_SESSION['products']); // renvoie + et le nombre d'élément session
+                                    echo  count($_SESSION['products']); // renvoie + et le nombre d'élément en session
                                 }
                             ?>
                             <span class="visually-hidden">unread messages</span>
@@ -42,9 +47,13 @@
                     </li>
                 <ul>
             </nav>
+
+            <!-- main -->
+
         <main class="container my-5">
             <h1 class="row col-12">Ajouter un produit</h1>
             <form action="traitement.php?action=addProduct" method="post" enctype="multipart/form-data" class="row col-12 "> <!-- formulaire pour ajouter un produit, les données sont envoyé sur la page traitement.php avec la methode post -->
+            <!-- enctype="multipart/form-data" est obligatoire lorsqu'on veut uploader des fichiers -->
                 <p class="col-12">
                     <label>
                         Nom du produit : 
@@ -71,19 +80,28 @@
                     <input type="submit" name="submit" value="Ajouter le produit" class="btn btn-primary" id="boutton">
                 </p>
             </form>
+
+            <!-- On indique ici le nombre de produits ajoutés -->
             <p class="bg-success rounded-pill text-center text-white col-3">
                 <?php
-                if(!isset($_SESSION['products']) || empty($_SESSION['products'])){
-                echo "Aucun produit ajouté";
-                } else {
-                    echo "<p class='bg-success col-3 rounded-pill text-center text-white'>Il y a ".count($_SESSION['products'])." produits ajoutés</p>";
+                if(!isset($_SESSION['products']) || empty($_SESSION['products'])){ // vérifie si il n'y a pas de session présente alors
+                echo "Aucun produit ajouté"; // renvoie ce message si il n'y a pas de session
+                } else { // sinon
+                    echo "<p class='bg-success col-3 rounded-pill text-center text-white'>Il y a ".count($_SESSION['products'])." produits ajoutés</p>"; // renvoie ce message qui compte le nombre de produits dans session
                 }
                 ?> 
             </p>
+
+            <!-- Envoie un message alert lorsque l'utilisateur ajoute un produit (différe celon les données saisies) -->
                 <?php
                 if (isset($_SESSION['alert'])){ // si il y a un $_SESSION['alert'] alors
                     echo $_SESSION['alert'];    // renvoie $_SESSION['alert']
                     unset($_SESSION['alert']);  //Détruit $_SESSION['alert'] des qu'on recharge la page, c'est pour que le message d'alert ne reste pas permanent sur la page
+                }
+
+                if (isset($_SESSION['alertFichier'])){ // si il y a un $_SESSION['alert'] alors
+                    echo $_SESSION['alertFichier'];    // renvoie $_SESSION['alert']
+                    unset($_SESSION['alertFichier']);  //Détruit $_SESSION['alert'] des qu'on recharge la page, c'est pour que le message d'alert ne reste pas permanent sur la page
                 }
             ?>
            </p>
